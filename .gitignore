@@ -1,0 +1,4 @@
+dir_to_ignore/node_modules
+
+.DS_Store
+.env

@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.sponsored{
+
+    margin-top: 10px;
+
+
+}
+
+
+.sponsored-card{
+    display: flex;
+margin-left: maximum;
+
+margin-left: 30px
+
+}
+.sponsored-card-img{
+    width: 300px;
+    height: 180px;
+
+}
+.sponsored-card-img-time{
+    display: flex;
+}
+.card-time{
+    margin-top: 160px;
+margin-left: -50px;
+width: 50px;
+height: 20px;
+background-color: #707070;
+color: #fff;
+}
+.sponsored-card-items{
+    display: flex;
+    margin-top: 20px;
+}
+.views{
+    display: flex;
+    margin-left: 110px;
+
+}
+.sponsored-card-title{
+    font-size: 26px;
+    width: max-content;
+
+}
+.views-number{
+    margin-right: 10px;
+    font-family: "Roboto", sans-serif;
+}
+

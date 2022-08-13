@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.FeaturedTitle{
+    margin-top: 100px;
+    margin-left: 140px;
+}
+.feautred-titile{
+    display: flex;
+      font-family: "Roboto", sans-serif;
+      margin-bottom: 10px;
+  }
+  .featured-titile-text{
+     
+  }
+  .fa-angle-up{
+      margin-left: 10px;
+      font-size: 20px;
+  }

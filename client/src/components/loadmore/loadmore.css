@@ -22,3 +22,13 @@ color: #fff;
 font-family: "Roboto", sans-serif;
 
 }
+@media (max-width: 480px) {
+
+    .LoadMore{
+        margin-top: 40px;
+        margin-left: 40px;
+ 
+    }
+  
+
+  }

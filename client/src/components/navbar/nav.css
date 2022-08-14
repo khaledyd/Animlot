@@ -7,6 +7,7 @@
   display: flex;
   margin-left: 140px;
   margin-top: 30px;
+
 }
 .logo-and-mainu {
   display: flex;
@@ -86,4 +87,44 @@
    color:  #707070;
    font-size: 20px;
    
+}
+.nav {
+
+}
+@media  (max-width: 480px) 
+{ 
+.logo-and-mainu {
+margin-top: -120px;
+  }
+  .logo{
+    width: 100px;
+    height: 29.6px;
+   
+   
+  }
+  .nav{
+    margin: 30px;
+    margin-top: 10px;
+    
+  }
+  .search-area {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 30px;
+
+  
+  }
+  .what-is-and-how-it-works{
+    display: flex;
+    flex-direction: column;
+  }
+  .search-btn{
+    margin-left: 0px;
+  }
+  .account{
+
+
+margin-left: 50px;
+  }
 }

@@ -5,7 +5,6 @@ export default function Nav() {
   return (
     <div className="nav">
       <div className="logo-and-mainu">
-        <i class="fa-solid fa-bars"></i>
         <img className="logo" src="./images/logo.png" alt="" />
       </div>
       <div className="search-area">

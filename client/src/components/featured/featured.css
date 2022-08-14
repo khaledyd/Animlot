@@ -56,3 +56,27 @@ color: #fff;
     font-family: "Roboto", sans-serif;
 }
 
+@media (max-width: 480px) {
+    .Featured{ 
+margin-left: -30px;
+    }
+    .Featured-card-img{
+        width: 430px;
+        height: 262px;
+    
+    }
+    .card-time{
+        margin-top: 200px;
+    margin-left: -50px;
+    width: 50px;
+    height: 20px;
+    background-color: #707070;
+    color: #fff;
+    }
+    .views{
+        display: flex;
+        margin-left: 240px;
+    
+    }
+
+  }

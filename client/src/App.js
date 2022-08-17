@@ -1,64 +1,58 @@
 import React from "react";
-import Featured from "./components/featured/Featured";
-import FeaturedTitle from "./components/featuredtitle/FeaturedTitle";
-import Footer from "./components/footer/Footer";
-import LoadMore from "./components/loadmore/LoadMore";
-import Nav from "./components/navbar/Nav";
-import SponsoredTitle from "./components/sponsored-title/SponsoredTitle";
-import Sponsored from "./components/sponsored/Sponsored";
+import Featured from "./views/homepage/components/featured/Featured";
+import FeaturedTitle from "./views/homepage/components/featuredtitle/FeaturedTitle";
+import Footer from "./views/homepage/components/footer/Footer";
+import LoadMore from "./views/homepage/components/loadmore/LoadMore";
+import Nav from "./views/homepage/components/navbar/Nav";
+import SponsoredTitle from "./views/homepage/components/sponsored-title/SponsoredTitle";
+import Sponsored from "./views/homepage/components/sponsored/Sponsored";
+import Homepage from "./views/homepage/page/Homepage";
+import Homepageaccount from "./views/homepageaccount/components/Homepageaccount";
+import Lotsettingfooter from "./views/lotseating/components/lotsettingfooter/Lotsettingfooter";
+import Lotsettingform from "./views/lotseating/components/lotsettingform/Lotsettingform";
+import Lotseetingnav from "./views/lotseating/components/lotsettingnav/Lotseetingnav";
+import Singupaccount from "./views/singup/compnents/singupaccount/Singupaccount";
+import Singupfooter from "./views/singup/compnents/singupfooter/Singupfooter";
+import Singupnav from "./views/singup/compnents/singupnav/Singupnav";
+import Singup from "./views/singup/page/Singup";
+import Singingaccountfooter from "./views/sining/components/singinaccountfoooter/Singingaccountfooter";
+import SingingAccount from "./views/sining/components/singingaccount/SingingAccount";
+import SinginNav from "./views/sining/components/singinnav/SinginNav";
+import Singing from "./views/sining/page/Singing";
+import Userhomepagefooter from "./views/userhomepage/components/userhomepagefooter/Userhomepagefooter";
+import Userhomepageheader from "./views/userhomepage/components/userhomepageheader/Userhomepageheader";
+import Userhomepageinfromation from "./views/userhomepage/components/userhomepageinfromation/Userhomepageinfromation";
+import Userhomepagenav from "./views/userhomepage/components/userhomepagenav/Userhomepagenav";
+import Userhomepage from "./views/userhomepage/page/Userhomepage";
 
 export default function App() {
   return (
     <div className="ap">
-      <Nav />
-      <SponsoredTitle />
-      <div className="sponsored-card">
-        <Sponsored imgs="./images/Rectangle 9.png" />
-        <Sponsored imgs="./images/Rectangle 27.png" />
-        <Sponsored imgs="./images/Rectangle 29.png" />
-        <Sponsored imgs="./images/Rectangle 43.png" />
-      </div>
-      <FeaturedTitle />
-      <div className="Featured-card">
-          <Featured
-              fimgs="./images/Rectangle 35.png"
-          />
-          <Featured
-              fimgs="./images/Rectangle 11.png"
-          />
-          <Featured
-              fimgs="./images/Rectangle 43.png"
-          />
-          <Featured
-              fimgs="./images/Rectangle 45.png"
-          />
-          <Featured
-              fimgs="./images/Rectangle 31.png"
-          />
-          <Featured
-              fimgs="./images/Rectangle 29.png"
-          />
-          <Featured
-              fimgs="./images/Rectangle 23.png"
-          />
-          <Featured
-              fimgs="./images/Rectangle 27.png"
-          />
-          <Featured
-              fimgs="./images/Rectangle 9.png"
-          />
-          <Featured
-              fimgs="./images/Rectangle 32.png"
-          />
-          <Featured
-              fimgs="./images/Rectangle 24.png"
-          />
-          <Featured
-              fimgs="./images/Rectangle 9.png"
-          />
-      </div>
-      <LoadMore/>
-      <Footer/>
+      {/*
+        sing in........
+           <Singing/>
+     */}
+
+      {/* 
+      sing up........
+     <Singup/>
+        */}
+      {/*  
+      homepage.......
+    <Homepage/> 
+     */}
+
+      {/* 
+      homepageaccount....... 
+  <Homepageaccount/>
+     */}
+      {/* 
+      Userhomepage....... 
+ <Userhomepage/>
+     */}
+     <Lotseetingnav/>
+     <Lotsettingform/>
+     <Lotsettingfooter/>
     </div>
   );
 }

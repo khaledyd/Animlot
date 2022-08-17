@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+.userhomepagenav{
+    display: flex;
+}
+.userhomepagenavall{
+    display: flex;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+.logo-user-nav{
+    width: 186px;
+    height: 74px;
+}
+.userhomepage-nav-user-logout{
+    padding-left:1050px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.user-name-nav{
+margin-top: -20px;
+}

@@ -1,0 +1,65 @@
+import React from 'react'
+import Featured from '../components/featured/Featured'
+import FeaturedTitle from '../components/featuredtitle/FeaturedTitle'
+import Footer from '../components/footer/Footer'
+import LoadMore from '../components/loadmore/LoadMore'
+import Nav from '../components/navbar/Nav'
+import SponsoredTitle from '../components/sponsored-title/SponsoredTitle'
+import Sponsored from '../components/sponsored/Sponsored'
+
+export default function Homepage() {
+  return (
+    <div className='Homepage'>
+    <Nav/>
+    <SponsoredTitle/>
+    <div className="sponsored-card">
+        <Sponsored imgs="./images/Rectangle 9.png" />
+        <Sponsored imgs="./images/Rectangle 27.png" />
+        <Sponsored imgs="./images/Rectangle 29.png" />
+        <Sponsored imgs="./images/Rectangle 43.png" />
+      </div>
+  
+    <FeaturedTitle/>
+    <div className="Featured-card">
+          <Featured
+              fimgs="./images/Rectangle 35.png"
+          />
+          <Featured
+              fimgs="./images/Rectangle 11.png"
+          />
+          <Featured
+              fimgs="./images/Rectangle 43.png"
+          />
+          <Featured
+              fimgs="./images/Rectangle 45.png"
+          />
+          <Featured
+              fimgs="./images/Rectangle 31.png"
+          />
+          <Featured
+              fimgs="./images/Rectangle 29.png"
+          />
+          <Featured
+              fimgs="./images/Rectangle 23.png"
+          />
+          <Featured
+              fimgs="./images/Rectangle 27.png"
+          />
+          <Featured
+              fimgs="./images/Rectangle 9.png"
+          />
+          <Featured
+              fimgs="./images/Rectangle 32.png"
+          />
+          <Featured
+              fimgs="./images/Rectangle 24.png"
+          />
+          <Featured
+              fimgs="./images/Rectangle 9.png"
+          />
+      </div>
+    <LoadMore/>
+    <Footer/>
+    </div>
+  )
+}

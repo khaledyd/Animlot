@@ -1,5 +1,8 @@
 import React from "react";
 import "./featured.css";
+import { Link } from "react-router-dom";
+
+
 
 export default function Featured(props) {
   return (
@@ -7,7 +10,8 @@ export default function Featured(props) {
       <div className="Featured-card">
         <div className="Featured-card-elemts">
           <div className="Featured-card-img-time">
-            <img className="Featured-card-img" src={props.fimgs} alt="" />
+          <Link className="link" to={"/Singlelot"}><img className="Featured-card-img" src={props.fimgs} alt="" /> </Link>
+            
             <div className="card-time">14:20</div>
           </div>
 

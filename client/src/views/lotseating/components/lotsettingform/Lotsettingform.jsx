@@ -1,5 +1,6 @@
 import React from "react";
 import "./lotsettingform.css";
+import { Link } from "react-router-dom";
 
 export default function Lotsettingform() {
   return (
@@ -16,7 +17,9 @@ export default function Lotsettingform() {
           <option value="opel">Nature</option>
           <option value="audi">Lifestyle</option>
         </select>
-        <button className=" create-lot">Create Your  Lot</button>
+        
+<Link className="link" to={"/Ccreator"}> <button className=" create-lot">Create Your  Lot</button> </Link>
+        
       </form>
     </div>
   );

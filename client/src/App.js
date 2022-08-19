@@ -12,6 +12,16 @@ import Homepageaccount from "./views/homepageaccount/components/Homepageaccount"
 
 import Userhomepage from "./views/userhomepage/page/Userhomepage";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Ccdnav from "./views/contentcreatordashboard/components/ccdnav/Ccdnav";
+import Ccdheader from "./views/contentcreatordashboard/components/ccdheader/Ccdheader";
+import Ccdcontent from "./views/contentcreatordashboard/components/ccdcontent/Ccdcontent"
+import Ccdfooter from "./views/contentcreatordashboard/components/ccdfooter/Ccdfooter";
+import Ccreator from "./views/contentcreatordashboard/page/Ccreator";
+import Singlelotnav from "./views/singlelot/components/singlelotnav/Singlelotnav";
+import Singlelotcontent from "./views/singlelot/components/singlelotcontent/Singlelotcontent";
+import Singlelotfooter from "./views/singlelot/components/singlelotfooter/Singlelotfooter";
+import Singlelot from "./views/singlelot/page/Singlelot";
+
 
 
 export default function App() {
@@ -44,7 +54,8 @@ export default function App() {
      <Lotseeting/>
      */}
      {/* */}
-      <Router>
+     
+     <Router>
       <Routes>
         <Route exact path="/" element={<Homepage />} />
 
@@ -72,8 +83,24 @@ export default function App() {
           element={<Homepageaccount />}
         />
         <Route path="/Lotseeting" element={<Lotseeting />} />
+
+        <Route
+          exact
+          path="/Ccreator"
+          element={<Ccreator />}
+        />
+           <Route
+          exact
+          path="/Singlelot"
+          element={<Singlelot />}
+        />
+   
       </Routes>
+  
+
     </Router>
+  
+    
     </div>
   );
 }

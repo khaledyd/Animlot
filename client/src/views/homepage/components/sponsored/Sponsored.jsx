@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./sponsore.css";
+
 
 export default function Sponsored(props) {
   return (
@@ -7,7 +9,8 @@ export default function Sponsored(props) {
       <div className="sponsored-card">
         <div className="sponsored-card-elemts">
           <div className="sponsored-card-img-time">
-            <img className="sponsored-card-img" src={props.imgs} alt="" />
+          <Link className="link" to={"/Singlelot"}> <img className="sponsored-card-img" src={props.imgs} alt="" /></Link>
+           
             <div className="card-time">14:20</div>
           </div>
 

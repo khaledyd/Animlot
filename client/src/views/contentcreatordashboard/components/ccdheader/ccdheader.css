@@ -1,0 +1,78 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+.uploadfile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.upload-file{
+  margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.upload-element{
+   display: flex;
+flex-direction: column;
+}
+.keyyword-span{
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+ 
+}
+
+.upload-submit{
+    margin-top: 10px;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+.keyword-input{
+    margin-top: 10px;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.type-of-the-question{
+   margin-left: -30px;
+}
+.type-btn{
+    width: 100px;
+    height: 30px;
+
+    border-radius: 10px;
+    background-color: #707070;
+    border: none;
+    color: #fff;
+margin-right: 10px;
+}
+.type-btn1{
+    width: 100px;
+    height: 30px;
+    padding-right: 10px;
+    border-radius: 10px;
+    background-color: #707070;
+    border: none;
+    color: #fff;
+}
+.upload-btn{
+    width: 200px;
+        height: 40px;
+        margin-top: 20px;
+        border-radius: 10px;
+        background-color: #707070;
+        border: none;
+        color: #fff;
+        margin-left: -50px;
+}

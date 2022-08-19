@@ -1,5 +1,7 @@
 import React from "react";
 import "./singingaccount.css";
+import { Link } from "react-router-dom";
+
 
 export default function SingingAccount() {
   return (
@@ -11,9 +13,10 @@ export default function SingingAccount() {
           <input className="singing-email" type="text" />
           <span className="singng-span">Password</span>
           <input className="singing-password" type="password"></input>
-          <button className="singing-btn">Sing in</button>
+          <Link className="link" to={"/Userhomepage"}>  <button className="singing-btn">Sing in</button></Link>
+        
           <div className="sing-up-forget-password">
-            <p className="sing-up-text"><strong>Sing</strong> up</p>
+          <Link className="link" to={"/Singup"}><p className="sing-up-text"><strong>Sing</strong> up</p></Link>
             <p className="foget-password-text">Forget password</p>
           </div>
         </form>

@@ -1,11 +1,13 @@
 import React from "react";
 import "./nav.css";
+import { Link } from "react-router-dom";
+
 
 export default function Nav() {
   return (
     <div className="nav">
       <div className="logo-and-mainu">
-        <img className="logo" src="./images/logo.png" alt="" />
+      <Link className="link" to={"/"}>  <img className="logo" src="./images/logo.png" alt="" /> </Link>
       </div>
       <div className="search-area">
         <div className="what-is-and-how-it-works">
@@ -24,7 +26,9 @@ export default function Nav() {
         </button>
       </div>
       <div className="account">
-        <i className="fa-solid fa-user"></i>
+      <Link className="link" to={"/Singing"}> <i className="fa-solid fa-user"></i></Link>
+    
+       
       </div>
     </div>
   );

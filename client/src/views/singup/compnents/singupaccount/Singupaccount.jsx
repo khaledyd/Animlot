@@ -1,5 +1,7 @@
 import React from "react";
 import "./singupaccount.css";
+import { Link } from "react-router-dom";
+
 
 export default function Singupaccount() {
   return (
@@ -18,12 +20,25 @@ export default function Singupaccount() {
           <span className="singup-span">Confirm Password</span>
           <input className="singup-password" type="password"></input>
           <span className="singup-span">Brithday</span>
-          <input className="birthday" type="date" id="birthday" name="birthday"></input>
-          <button className="singup-btn">Sing Up</button>
+          <input
+            className="birthday"
+            type="date"
+            id="birthday"
+            name="birthday"
+          ></input>
+           <Link className="link" to={"/Userhomepage"}>
+              {" "}
+              <button className="singup-btn">Sing Up</button>
+            </Link>
+       
           <div className="sing-up-forget-password">
-            <p className="sing-up-text">
-              <strong>Sing</strong> in
-            </p>
+            <Link className="link" to={"/Singing"}>
+              {" "}
+              <p className="sing-up-text">
+                <strong>Sing</strong> in
+              </p>
+            </Link>
+
             <p className="foget-password-text">Forget password</p>
           </div>
         </form>

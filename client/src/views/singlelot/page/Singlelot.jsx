@@ -9,6 +9,8 @@ export default function Singlelot() {
         <Singlelotnav/>
         <Singlelotcontent/>
         <Singlelotfooter/>
+        
     </div>
+    
   )
 }

@@ -3,6 +3,7 @@ import "./nav.css";
 import { Link } from "react-router-dom";
 
 
+
 export default function Nav() {
   return (
     <div className="nav">
@@ -27,7 +28,7 @@ export default function Nav() {
       </div>
       <div className="account">
       <Link className="link" to={"/Singing"}> <i className="fa-solid fa-user"></i></Link>
-    
+      
        
       </div>
     </div>

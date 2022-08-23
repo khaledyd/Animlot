@@ -11,15 +11,10 @@ import Singing from "./views/sining/page/Singing";
 import Homepageaccount from "./views/homepageaccount/components/Homepageaccount"
 
 import Userhomepage from "./views/userhomepage/page/Userhomepage";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Ccdnav from "./views/contentcreatordashboard/components/ccdnav/Ccdnav";
-import Ccdheader from "./views/contentcreatordashboard/components/ccdheader/Ccdheader";
-import Ccdcontent from "./views/contentcreatordashboard/components/ccdcontent/Ccdcontent"
-import Ccdfooter from "./views/contentcreatordashboard/components/ccdfooter/Ccdfooter";
+import { BrowserRouter as Router, Routes, Route,  } from "react-router-dom";
+
 import Ccreator from "./views/contentcreatordashboard/page/Ccreator";
-import Singlelotnav from "./views/singlelot/components/singlelotnav/Singlelotnav";
-import Singlelotcontent from "./views/singlelot/components/singlelotcontent/Singlelotcontent";
-import Singlelotfooter from "./views/singlelot/components/singlelotfooter/Singlelotfooter";
+
 import Singlelot from "./views/singlelot/page/Singlelot";
 
 

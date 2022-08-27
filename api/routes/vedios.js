@@ -3,7 +3,7 @@ const User = require("../models/User");
 const Vedio = require("../models/Vedio");
 const bcrypt = require("bcrypt");
 
-//CREATE POST
+//CREATE vedio
 router.post("/", async (req, res) => {
   const newVedio = new Vedio(req.body);
   try {
@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-//UPDATE POST
+//UPDATE vedio
 router.put("/:id", async (req, res) => {
   try {
     const vedio = await Vedio.findById(req.params.id);
@@ -39,7 +39,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//DELETE POST
+//DELETE vedio
 router.delete("/:id", async (req, res) => {
   try {
     const vedio = await Vedio.findById(req.params.id);
@@ -58,7 +58,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-//GET POST
+//GET vedio
 router.get("/:id", async (req, res) => {
   try {
     const vedio = await Vedio.findById(req.params.id);
@@ -68,20 +68,15 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-//GET ALL POSTS
+//GET ALL vedio
 router.get("/", async (req, res) => {
-  const username = req.query.user;
-  const catName = req.query.cat;
+  const email = req.query.email;
+  const type = req.query.type;
   try {
     let vedios;
-    if (email) {
-      vedios = await Vedio.find({ email });
-    } else if (catName) {
-      vedios = await Vedio.find({
-        categories: {
-          $in: [catName],
-        },
-      });
+    if (email , type) {
+      vedios = await Vedio.find({ email,type });
+    
     } else {
       vedios = await Vedio.find();
     }

@@ -6,8 +6,21 @@ import LoadMore from '../components/loadmore/LoadMore'
 import Nav from '../components/navbar/Nav'
 import SponsoredTitle from '../components/sponsored-title/SponsoredTitle'
 import Sponsored from '../components/sponsored/Sponsored'
+import axios from "axios"
+import {useState , useEffect} from "react"
 
 export default function Homepage() {
+  
+    const [vedios, setVedios]= useState([])
+  
+    useEffect(()=>{
+      const fetchPosts = async () => {
+        const res = await axios.get("/vedios")
+        console.log(res)
+      }
+      fetchPosts()
+    },[])
+
   return (
     <div className='Homepage'>
     <Nav/>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 export default function Featured(props) {
   return (
     <div className="Featured">

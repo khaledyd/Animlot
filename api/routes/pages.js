@@ -4,9 +4,13 @@ const Vedio = require("../models/Page");
 const bcrypt = require("bcrypt");
 const Page = require("../models/Page");
 
+
 //CREATE POST
-router.post("/", async (req, res) => {
-  const newPage = new Page(req.body);
+ router.post("/lotseeting", async (req, res) => {
+  const newPage = new Page({
+    pagename: req.body.pagename,
+      catname: req.body.catname,
+  });
   try {
     const savedPage = await newPage.save();
     res.status(200).json(savedPage);
@@ -14,6 +18,37 @@ router.post("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+
+/*router.post("/Lotseeting", async (req, res) => {
+  try {
+    
+   
+    const newPage = new Page({
+      pagename: req.body.pagename,
+      catname: req.body.catname,
+     
+    });
+
+    const page = await newPage.save();
+    res.status(200).json(page);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}); */
+
+
+
+
+
+
+
+
+
+
+
+
 
 //UPDATE POST
 router.put("/:id", async (req, res) => {
@@ -71,22 +106,16 @@ router.get("/:id", async (req, res) => {
 
 //GET ALL POSTS
 router.get("/", async (req, res) => {
-  const username = req.query.user;
+  const pagename = req.query.page;
   const catName = req.query.cat;
   try {
-    let vedios;
-    if (email) {
-      vedios = await Vedio.find({ email });
-    } else if (catName) {
-      vedios = await Vedio.find({
-        categories: {
-          $in: [catName],
-        },
-      });
-    } else {
-      vedios = await Vedio.find();
+    let pages;
+    if (pagename, catName) {
+      pages = await Page.find({ pagename,catName });
+    }  else {
+      pages = await Page.find();
     }
-    res.status(200).json(vedios);
+    res.status(200).json(pages);
   } catch (err) {
     res.status(500).json(err);
   }

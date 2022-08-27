@@ -11,9 +11,8 @@ router.post("/singup", async (req, res) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
-
         password: hashedPass,
-        birthday: req.body.birthday
+     
 
 
       });

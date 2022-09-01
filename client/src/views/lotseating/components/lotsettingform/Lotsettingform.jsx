@@ -9,13 +9,16 @@ export default function Lotsettingform() {
   const [catName, setCatName] = useState("");
 
   const handlepageSubmit = async (e)=> { 
-    e.preventDefault()
-    const res = await axios.post("/pages",{
-      pageName,
-      catName,
     
-    });
-    console.log(res)
+      e.preventDefault()
+      const res = await axios.post("/pages/lotseeting",{
+        pageName,
+        catName,
+      
+      });
+      console.log(res)
+    
+ 
    
    
   } 

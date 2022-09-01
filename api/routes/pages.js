@@ -4,22 +4,21 @@ const Vedio = require("../models/Page");
 const bcrypt = require("bcrypt");
 const Page = require("../models/Page");
 
-
-//CREATE POST
- router.post("/lotseeting", async (req, res) => {
+//CREATE lot
+router.post("/lotseeting", async (req, res) => {
   const newPage = new Page({
     pagename: req.body.pagename,
-      catname: req.body.catname,
-  });
+    catname: req.body.catname,
+  })
+
   try {
     const savedPage = await newPage.save();
     res.status(200).json(savedPage);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
-
-
 
 /*router.post("/Lotseeting", async (req, res) => {
   try {
@@ -37,18 +36,6 @@ const Page = require("../models/Page");
     res.status(500).json(err);
   }
 }); */
-
-
-
-
-
-
-
-
-
-
-
-
 
 //UPDATE POST
 router.put("/:id", async (req, res) => {
@@ -110,9 +97,9 @@ router.get("/", async (req, res) => {
   const catName = req.query.cat;
   try {
     let pages;
-    if (pagename, catName) {
-      pages = await Page.find({ pagename,catName });
-    }  else {
+    if ((pagename, catName)) {
+      pages = await Page.find({ pagename, catName });
+    } else {
       pages = await Page.find();
     }
     res.status(200).json(pages);

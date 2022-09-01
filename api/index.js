@@ -11,6 +11,7 @@ const path = require("path");
 
 dotenv.config(); 
 app.use(express.json());
+
 mongoose.connect(process.env.MONG_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

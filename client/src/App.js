@@ -16,10 +16,14 @@ import { BrowserRouter as Router, Routes, Route,  } from "react-router-dom";
 import Ccreator from "./views/contentcreatordashboard/page/Ccreator";
 
 import Singlelot from "./views/singlelot/page/Singlelot";
+import { Context } from "./context/Context";
+import { useContext } from "react";
+
 
 
 
 export default function App() {
+  const { user } = useContext(Context);
   return (
     <div className="ap">
       {/*

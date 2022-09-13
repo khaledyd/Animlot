@@ -5,14 +5,15 @@ const bcrypt = require("bcrypt");
 
 //CREATE vedio
 router.post("/", async (req, res) => {
-  const newVedio = new Vedio(req.body);
+  const newVideo = new Vedio(req.body);
   try {
-    const savedVedio = await newVedio.save();
-    res.status(200).json(savedVedio);
+    const savedVideo = await newVideo.save();
+    res.status(200).json(savedVideo);
   } catch (err) {
-    res.status(500).json(err);
+ 
   }
 });
+
 
 //UPDATE vedio
 router.put("/:id", async (req, res) => {

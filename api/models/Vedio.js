@@ -1,30 +1,30 @@
 const mongoose = require('mongoose');
 const VedioSchema = new mongoose.Schema({ 
-    keyword: {
-        type: String,
-        required: true,
-     
-      },
-      type: {
-        type: String,
-        required: true,
-
-      },
-      vedio: {
-        type: String,
-        
-
-      },
-      email: {
-        type: String,
-        required: true,
-        
-
+  userId: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  desc: {
+    type: String,
+    required: true,
+  },
+  imgUrl: {
+    type: String,
+    required: true,
+  },
+  videoUrl: {
+    type: String,
+    required: true,
+  },
       },
     
     
     
 
-}
+
     );
     module.exports = mongoose.model("Vedio", VedioSchema);

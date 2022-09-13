@@ -9,6 +9,7 @@ import Sponsored from '../components/sponsored/Sponsored'
 import axios from "axios"
 import {useState , useEffect} from "react"
 
+
 export default function Homepage() {
   
     const [vedios, setVedios]= useState([])
@@ -16,6 +17,7 @@ export default function Homepage() {
     useEffect(()=>{
       const fetchPosts = async () => {
         const res = await axios.get("/vedios")
+        setVedios(res.data)
         console.log(res)
       }
       fetchPosts()
@@ -25,12 +27,14 @@ export default function Homepage() {
     <div className='Homepage'>
     <Nav/>
     <SponsoredTitle/>
-    <div className="sponsored-card">
-        <Sponsored imgs="./images/Rectangle 9.png" />
-        <Sponsored imgs="./images/Rectangle 27.png" />
-        <Sponsored imgs="./images/Rectangle 29.png" />
-        <Sponsored imgs="./images/Rectangle 43.png" />
-      </div>
+ 
+        {vedios.map((ve)=>(
+            <Sponsored />
+        ))}
+
+      
+   
+  
   
     <FeaturedTitle/>
     <div className="Featured-card">

@@ -3,7 +3,9 @@ import "./singingaccount.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
-import  {Context}  from "../../../../context/Context";
+import { Context } from "../../../../context/Context";
+import { auth, provider } from "../../../.././firebase";
+import { signInWithPopup } from "firebase/auth";
 
 export default function SingingAccount() {
   const emaildRef = useRef();
@@ -20,10 +22,35 @@ export default function SingingAccount() {
       });
 
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      res.data && window.location.replace("/userhomepage");
+      res.data && window.location.replace("/ccreator");
       console.log(res);
     } catch (err) {}
   };
+
+
+
+  const signInWithGoogle = async () => {
+    dispatch({ type: "LOGIN_START" });
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        axios
+          .post("/auth/google", {
+            name: result.user.displayName,
+            email: result.user.email,
+            img: result.user.photoURL,
+          })
+          .then((res) => {
+            console.log(res);
+            dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      
+          });
+      })
+      .catch((error) => {
+        dispatch({ type: "LOGIN_FAILURE" })
+       console.log(error);
+      });
+  };
+
   return (
     <div className="SingingAccount">
       <div className="singingaccount-all">
@@ -51,7 +78,9 @@ export default function SingingAccount() {
                 <strong>Sing</strong> up
               </p>
             </Link>
-            <p className="foget-password-text">Forget password</p>
+            <button className="foget-password-text" onClick={signInWithGoogle}>
+              sing with google
+            </button>
           </div>
         </form>
       </div>

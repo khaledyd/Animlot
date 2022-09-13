@@ -3,6 +3,8 @@ import "./singupaccount.css";
 import { Link } from "react-router-dom";
 import {useState, useEffect } from "react"
 import axios from "axios";
+import { auth, provider } from "../../../.././firebase";
+import { signInWithPopup } from "firebase/auth";
 
 export default function Singupaccount() {
   const [firstname,setFirtname] = useState("")
@@ -18,10 +20,12 @@ export default function Singupaccount() {
       email,
       password,
     });
+    res.data && window.location.replace("/Userhomepage");
     console.log(res)
    
    
   } 
+
 
   return (
     <div className="Singupaccount">
@@ -81,7 +85,7 @@ export default function Singupaccount() {
               </p>
             </Link>
 
-            <p className="foget-password-text">Forget password</p>
+            <button className="foget-password-text">sing up with google</button>
           </div>
         </form>
       </div>

@@ -10,14 +10,25 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    name: {
+      type: String,
+  
+    },
     email: {
       type: String,
       required: true,
       unique: true,
     },
+    img: {
+      type: String,
+    },
     password: {
       type: String,
-      required: true,
+   
+    },
+    fromGoogle: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }

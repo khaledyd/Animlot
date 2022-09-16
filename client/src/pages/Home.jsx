@@ -66,41 +66,39 @@ border: solid 0.1px  #707070;
     <Container>
       <Navbar />
       <Header />
-      <Sponsored />
+      <Sponsored img = 'https://images.pexels.com/photos/6707628/pexels-photo-6707628.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' />
       <SCards>
         <SponsoredCards
-          img
-          src="https://images.pexels.com/photos/2789545/pexels-photo-2789545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt=""
+          img ="https://images.pexels.com/photos/2789545/pexels-photo-2789545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      
         />
         <SponsoredCards
-          img
-          src="https://images.pexels.com/photos/2789545/pexels-photo-2789545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt=""
+          img="https://images.pexels.com/photos/1557183/pexels-photo-1557183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          
         />
-        <SponsoredCards />
-        <SponsoredCards />
+        <SponsoredCards img = "https://images.pexels.com/photos/12498608/pexels-photo-12498608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        <SponsoredCards img = "https://images.pexels.com/photos/3741315/pexels-photo-3741315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
         <SponsoredCards />
       </SCards>
 <Hr/>
-      <Featured />
+      <Featured img = "https://images.pexels.com/photos/8082205/pexels-photo-8082205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
       <Fcards>
-        <Featuredcard />
-        <Featuredcard />
-        <Featuredcard />
-        <Featuredcard />
-        <Featuredcard />
-        <Featuredcard />
-        <Featuredcard />
-        <Featuredcard />
-        <Featuredcard />
-        <Featuredcard />
+        <Featuredcard img = "https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
+        <Featuredcard img = 'https://images.pexels.com/photos/1181288/pexels-photo-1181288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' />
+        <Featuredcard img = "https://images.pexels.com/photos/8082205/pexels-photo-8082205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"   />
+        <Featuredcard  img = "https://images.pexels.com/photos/12498608/pexels-photo-12498608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        <Featuredcard  img ="https://images.pexels.com/photos/2789545/pexels-photo-2789545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        <Featuredcard   img ="https://images.pexels.com/photos/2789545/pexels-photo-2789545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        <Featuredcard  img="https://images.pexels.com/photos/1557183/pexels-photo-1557183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
+        <Featuredcard img = "https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        <Featuredcard  img ="https://images.pexels.com/photos/2789545/pexels-photo-2789545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        <Featuredcard img="https://images.pexels.com/photos/1557183/pexels-photo-1557183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
       </Fcards>
       <Hr/>
       <TwoQuestionsTitles />
       <QCard>
-        <QuestionCard />
-        <QuestionCard />
+        <QuestionCard img ='https://images.pexels.com/photos/911758/pexels-photo-911758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' />
+        <QuestionCard img ='https://images.pexels.com/photos/269252/pexels-photo-269252.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' />
       </QCard>
       <Hr/>
       <Hcard>

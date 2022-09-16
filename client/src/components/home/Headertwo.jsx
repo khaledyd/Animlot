@@ -99,7 +99,7 @@ margin-left: 7px;
        
 
         <Card>
-          <Cimg src={img}/>
+          <Cimg src='./images/himg.jpg'/>
           <CartInfo>
             <LotPhoto src="./images/pexels-alex-umbelino-13429899.jpg"></LotPhoto>
             <Lotsubinfo>

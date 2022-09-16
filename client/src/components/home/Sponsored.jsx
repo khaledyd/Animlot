@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Sponsored() {
+export default function Sponsored({img}) {
   const Container = styled.div``;
   const Wraper = styled.div`
     margin-left: 100px;
@@ -94,7 +94,7 @@ export default function Sponsored() {
 
         <Card>
           <Stitle>Sponsosred</Stitle>
-          <Cimg src="./images/scimg.jpg" />
+          <Cimg src={img} />
           <CartInfo>
             <LotPhoto src="./images/pexels-alex-umbelino-13429899.jpg"></LotPhoto>
             <Lotsubinfo>

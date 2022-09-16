@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Featured() {
+export default function Featured({img}) {
   const Container = styled.div``;
   const Wraper = styled.div`
     margin-left: 100px;
@@ -94,7 +94,7 @@ export default function Featured() {
 
         <Card>
           <Stitle>Featured</Stitle>
-          <Cimg src="./images/scimg.jpg" />
+          <Cimg src={img}/>
           <CartInfo>
             <LotPhoto src="./images/ft.jpg"></LotPhoto>
             <Lotsubinfo>

@@ -38,7 +38,8 @@ export default function Sponsored() {
     margin-left: 30px;
     margin-top: 6px;
     border-radius: 5px;
-    border: 0.05px solid #2F2032;
+ border: none;
+ box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   `;
   const LotName = styled.p`
     font-family: "Roboto", sans-serif;

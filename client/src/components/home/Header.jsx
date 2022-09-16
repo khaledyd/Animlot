@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function Header() {
   const Container = styled.div``;
@@ -36,7 +37,9 @@ export default function Header() {
     background-color: #aa3b75;
     color: #fff;
     outline: none;
+
   `;
+  
   const Input = styled.input`
     height: 40px;
     border: none;
@@ -80,8 +83,9 @@ export default function Header() {
         </HeaderTitile>
         <Search>
           <Select>
-            <option value="volvo">how it works ?</option>
-            <option value="saab">what is ?</option>
+            <option value="volvo">how it works..</option>
+            <option value="saab">what is..</option>
+            <KeyboardArrowDownIcon/>
           </Select>
           <Input type="text" />
 

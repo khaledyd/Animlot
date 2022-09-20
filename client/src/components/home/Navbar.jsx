@@ -13,6 +13,7 @@ export default function Navbar() {
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
+    
   `;
 
   const Img = styled.img`

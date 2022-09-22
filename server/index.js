@@ -8,12 +8,13 @@ import authRoutes from "./routes/auth.js";
 import cookieParser from "cookie-parser";
 
 
+
 const app = express();
 dotenv.config();
 
 const connect = () => {
   mongoose
-    .connect(process.env.MONGO)
+    .connect(process.env.MONG_URL)
     .then(() => {
       console.log("Connected to DB");
     })
@@ -30,6 +31,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/comments", commentRoutes);
 
+
 //error handler
 app.use((err, req, res, next) => {
   const status = err.status || 500;
@@ -41,7 +43,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8800, () => {
+app.listen(5002, () => {
   connect();
   console.log("Connected to Server");
 });

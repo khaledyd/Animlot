@@ -9,11 +9,18 @@ import cookieParser from "cookie-parser";
 
 
 
+
 const app = express();
 dotenv.config();
+app.use(express.json());
 
-const connect = () => {
-  mongoose
+
+
+
+
+
+const connect = async () => {
+  await mongoose
     .connect(process.env.MONG_URL)
     .then(() => {
       console.log("Connected to DB");

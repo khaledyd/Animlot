@@ -5,7 +5,7 @@ import { createError } from "../error.js";
 import jwt from "jsonwebtoken";
 
 export const signup = async (req, res, next) => {
-  try {
+  /*try {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);
     const newUser = new User({ ...req.body, password: hash });
@@ -15,8 +15,12 @@ export const signup = async (req, res, next) => {
   } catch (err) {
     next(err);
     console.log(next);
-  }
-};
+  }*/
+  
+}
+
+
+
 
 export const signin = async (req, res, next) => {
   try {

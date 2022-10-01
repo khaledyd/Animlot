@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
+import Lots from "../models/Lots.js";
 import { createError } from "../error.js";
 import jwt from "jsonwebtoken";
 
@@ -16,11 +17,44 @@ export const signup = async (req, res, next) => {
     next(err);
     console.log(next);
   }*/
-  
-}
+  try {
+    const password = req.body.password;
+    const confirmPassword = req.body.confirmPassword;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPass = await bcrypt.hash(req.body.password, salt);
 
+    const saltt = await bcrypt.genSalt(10);
+    const hashedPasss = await bcrypt.hash(req.body.confirmPassword, saltt);
 
+    if (password !== confirmPassword) {
+      return res.status(500).send({ message: "Passwords Must be same" });
+    }
 
+    const newUser = new User({
+      displayname: req.body.displayname,
+      email: req.body.email,
+      password: hashedPass,
+      confirmPassword: hashedPasss,
+    });
+    const user = await newUser.save();
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+export const lots = async (req, res, next) => {
+  try {
+    const newLots = new Lots({
+      displayname: req.body.displayname,
+      Typeoflot: req.body.Typeoflot
+    });
+    const user = await newLots.save();
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
 export const signin = async (req, res, next) => {
   try {

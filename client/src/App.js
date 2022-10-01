@@ -8,8 +8,10 @@ import Signup from "./pages/Signup";
 import Userhomepage from "./pages/Userhomepage";
 import Watch from "./pages/Watch";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function App() {
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <div className="ap">
       {/*
@@ -31,7 +33,7 @@ export default function App() {
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/lot" element={<Lot />} />
           <Route exact path="/watch" element={<Watch />} />
-          <Route exact path="/userhomepage" element={<Userhomepage />} />
+          <Route exact path="/userhomepage" element={currentUser?<Userhomepage />:<Home />} />
         </Routes>
       </Router>
 

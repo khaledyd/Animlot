@@ -67,6 +67,7 @@ border: solid 0.1px  #707070;
 export default function Home() {
   const { currentUser } = useSelector((state) => state.user);
 
+
   return (
     <Container>
       <Navbar />

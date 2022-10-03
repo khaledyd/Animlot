@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 
 export default function App() {
   const { currentUser } = useSelector((state) => state.user);
+  const { currentLot } = useSelector((state) => state.lot);
   return (
     <div className="ap">
       {/*
@@ -31,9 +32,9 @@ export default function App() {
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
-          <Route exact path="/lot" element={<Lot />} />
+          <Route exact path="/lot"   element={currentLot? <Home/>: currentUser && <Lot/>} />
           <Route exact path="/watch" element={<Watch />} />
-          <Route exact path="/userhomepage" element={currentUser?<Userhomepage />:<Home />} />
+          <Route exact path="/userhomepage" element= {currentLot ? <Home />: currentUser && <Userhomepage />} />
         </Routes>
       </Router>
 

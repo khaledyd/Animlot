@@ -6,6 +6,10 @@ import Sidebar from "../components/Userhomepage/Sidebar";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { lotStart, lotSuccess, lotFailure } from "../Redux/lotSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -73,19 +77,32 @@ const Create_btn = styled.button`
 const Lot = () => {
   const [displayname, setDisplayname] = useState("");
   const [Typeoflot, setTypeoflot] = useState([]);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate()
+  const { currentLot } = useSelector((state) => state.lot);
 
   const hanldesubmit = async (e) => {
     e.preventDefault();
+    dispatch(lotStart());
     try {
-      const res = await axios.post("/auth/lots", {
+      const res = await axios.put("/auth/lots", {
         displayname,
         Typeoflot,
       });
+      dispatch(lotSuccess(res.data));
       navigate("/dashboard");
       console.log(res);
-    } catch (err) {}
+    } catch (err) {
+        dispatch(lotFailure())
+    }
   };
+
+
+
+
+ 
+
 
   return (
     <Container>
@@ -106,7 +123,7 @@ const Lot = () => {
             Content Creator
           </Content_creator>
         </Select>
-        <Create_btn onClick={hanldesubmit}>Create Lot</Create_btn>
+        <Link to ="/dashboard"><Create_btn onClick={handleSubmit}>Create Lot</Create_btn></Link>
       </Wraper>
     </Container>
   );

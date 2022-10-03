@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PersonIcon from "@mui/icons-material/Person";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -84,6 +85,7 @@ font-family: "Roboto", sans-serif;
 
 export default function Navbar() {
   const { currentUser } = useSelector((state) => state.user);
+  const {currentLot} = useSelector((state) => state.lot);
 
   return (
     <Container>
@@ -116,7 +118,7 @@ export default function Navbar() {
               <PersonIcon />
             </Login>
           )}
-          <Button>Join</Button>
+          {currentLot ? "": (<Link to ="/userhomepage"><Button>Join</Button></Link>)}
         </NavItemLogin>
       </Wraper>
     </Container>

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
-const Navbar = () => {
-    const Container = styled.div`
+const Container = styled.div`
         
         display:flex;
        
@@ -37,6 +37,10 @@ margin-top: 30px;
 
     background-color: black;
   `;
+
+const Navbar = () => {
+    const { currentLot } = useSelector((state) => state.lot);
+    
     
     return (
         <Container>

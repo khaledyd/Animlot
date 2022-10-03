@@ -34,6 +34,14 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    lotname:{
+      type: String,
+
+    },
+    Typeoflot :{
+      type: Array,
+
+  }
   },
   { timestamps: true }
 );

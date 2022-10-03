@@ -44,6 +44,9 @@ export const signup = async (req, res, next) => {
 };
 
 export const lots = async (req, res, next) => {
+  if (req.params.id === req.user.id){
+    
+  }
   try {
     const newLots = new Lots({
       displayname: req.body.displayname,

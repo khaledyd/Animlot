@@ -1,0 +1,91 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.Singupaccount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+.Singupaccount-all{
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 580px;
+    background-color:#F2F2F2;
+    border-radius: 20px;
+
+}
+.singup-form{
+
+padding-left: 150px;
+padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+
+ margin-left: 80px;
+ 
+}
+.singup-email{
+
+    width: 250px;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding-left: 20px;
+    }
+    .singup-password{
+   padding-left: 20px;
+        width: 250px;
+        height: 30px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+       
+    }
+    .singup-btn{
+        width: 100px;
+        height: 30px;
+        margin-top: 20px;
+        border-radius: 10px;
+        background-color: #707070;
+        border: none;
+        color: #fff;
+    }
+  .singup-span{
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+.account-title{
+padding-left: 230px;
+padding-top: 30px;
+font-family: 'Roboto', sans-serif;
+color:  #707070;
+
+}
+.sing-up-forget-password{
+    margin-left: 170px;
+    margin-top: -30px;
+
+    font-family: 'Roboto', sans-serif;
+}
+.sing-up-text{
+    font-weight: bold;
+    font-size: 15px;
+   margin-bottom: 5px;
+}
+.foget-password-text{
+    font-size: 12px
+}
+.birthday{
+    width: 250px;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+.type-btn{
+    
+}

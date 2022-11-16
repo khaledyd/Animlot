@@ -13,8 +13,6 @@ const Nav = () => {
           xs: "space-between",
           sm: "space-between",
           md: "space-between",
-          marginRight: "20px",
-          marginLeft: "20px",
           marginTop: "10px",
         },
         alignItems: {

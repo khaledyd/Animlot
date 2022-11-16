@@ -14,7 +14,7 @@ import SearchIcon from "@mui/icons-material/Search";
 const Hero = () => {
   return (
     <Box
-      width={"100%"}
+
       display={"flex"}
       alignItems={"center"}
       justifyContent={"center"}
@@ -28,6 +28,13 @@ const Hero = () => {
           md: "300px",
           lg: "300px",
         },
+        width:{
+          xs:"100%",
+          sm: "100%",
+          md: "100%",
+          lg: "100%",
+
+        }
       }}
     >
       <Typography

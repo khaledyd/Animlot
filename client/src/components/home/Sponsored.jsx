@@ -43,7 +43,7 @@ const Sponsored = () => {
         </Box>
         <Box
           sx={{
-            paddingRight: "10px",
+       
             paddingLeft:"10px"
           }}
         >

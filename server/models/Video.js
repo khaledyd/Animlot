@@ -38,6 +38,13 @@ const VideoSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    typeOfQuestion:{
+      type: [String],
+      default: [],
+      required: true,
+
+
+    }
   },
   { timestamps: true }
 );

@@ -24,12 +24,12 @@ export default function App() {
            <Login />   
                 <Userhomepage />
                 <Lot/>
-           <Home />      
-                      <Login />
+           <Settings />
+               <SingleLot />           <Login />
                     <Mininav />        <Signup/>       <SingleLot />       <Dashboard/>       <Upload />
       */}
 
-      <Settings />
+      <Home />
     </div>
   );
 }

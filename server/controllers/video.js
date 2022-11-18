@@ -124,3 +124,15 @@ export const search = async (req, res, next) => {
     next(err);
   }
 };
+
+export const isSponsorred = async (req, res) => {
+
+  try {
+    const video = await Video.find({ isSponsorred:"true"}.exec());
+    res.status(200).json(video);
+
+  } catch (err) {
+    next(err);
+
+  }
+};

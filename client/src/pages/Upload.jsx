@@ -9,8 +9,80 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import app from "../firebase";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 
 const Upload = () => {
+  const [img, setImg] = useState(undefined);
+  const [video, setVideo] = useState(undefined);
+  const [imgPerc, setImgPerc] = useState(0);
+  const [videoPerc, setVideoPerc] = useState(0);
+  const [inputs, setInputs] = useState({});
+  const [tags, setTags] = useState([]);
+
+  const handleChange = (e) => {
+    setInputs((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+  const uploadFile = (file, urlType) => {
+    const storage = getStorage(app);
+    const fileName = new Date().getTime() + file.name;
+    const storageRef = ref(storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        urlType === "imgUrl"
+          ? setImgPerc(Math.round(progress))
+          : setVideoPerc(Math.round(progress));
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+          default:
+            break;
+        }
+      },
+      (error) => {},
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setInputs((prev) => {
+            return { ...prev, [urlType]: downloadURL };
+          });
+        });
+      }
+    );
+  };
+
+  useEffect(() => {
+    video && uploadFile(video, "videoUrl");
+  }, [video]);
+
+  useEffect(() => {
+    img && uploadFile(img, "imgUrl");
+  }, [img]);
+
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    const res = await axios.post("/videos", { ...inputs });
+
+    console.log(res.data);
+  };
   return (
     <Box
       sx={{
@@ -74,12 +146,13 @@ const Upload = () => {
                   width: { lg: "70%", md: "70%", sm: "100%", xs: "100%" },
                   marginTop: "10px",
                 }}
+                name="title"
+                onChange={handleChange}
               />
               <InputLabel
                 id="demo-simple-select-label"
                 sx={{
                   marginTop: "10px",
-
                 }}
               >
                 Question type
@@ -92,6 +165,8 @@ const Upload = () => {
                   width: { lg: "70%", md: "70%", sm: "100%", xs: "100%" },
                   marginTop: "10px",
                 }}
+                name="typeOfQuestion"
+                onChange={handleChange}
               >
                 <MenuItem value={"what"}>What </MenuItem>
                 <MenuItem value={"how it works"}>How it works</MenuItem>
@@ -105,43 +180,56 @@ const Upload = () => {
                   width: { lg: "70%", md: "70%", sm: "100%", xs: "100%" },
                   marginTop: "10px",
                 }}
+                name="desc"
+                onChange={handleChange}
               />
               <InputLabel
                 id="demo-simple-select-label"
                 sx={{
                   marginTop: "10px",
-
                 }}
               >
                 Thumbnail
               </InputLabel>
-              <TextField
-                id="outlined-basic"
-                type={"file"}
-                variant="outlined"
-                sx={{
-                  width: { lg: "70%", md: "70%", sm: "100%", xs: "100%" },
-                  marginTop: "10px",
-                }}
-              />
+
+              {imgPerc > 0 ? (
+                "Uploading:" + imgPerc + "%"
+              ) : (
+                <TextField
+                  id="outlined-basic"
+                  type={"file"}
+                  variant="outlined"
+                  sx={{
+                    width: { lg: "70%", md: "70%", sm: "100%", xs: "100%" },
+                    marginTop: "10px",
+                  }}
+                  accept="image/*"
+                  onChange={(e) => setImg(e.target.files[0])}
+                />
+              )}
               <InputLabel
                 id="demo-simple-select-label"
                 sx={{
                   marginTop: "10px",
- 
                 }}
               >
                 Video
               </InputLabel>
-              <TextField
-                id="outlined-basic"
-                type={"file"}
-                variant="outlined"
-                sx={{
-                  width: { lg: "70%", md: "70%", sm: "100%", xs: "100%" },
-                  marginTop: "10px",
-                }}
-              />
+              {videoPerc > 0 ? (
+                "Uploading:" + videoPerc + "&"
+              ) : (
+                <TextField
+                  id="outlined-basic"
+                  type={"file"}
+                  variant="outlined"
+                  sx={{
+                    width: { lg: "70%", md: "70%", sm: "100%", xs: "100%" },
+                    marginTop: "10px",
+                  }}
+                  accept="video/*"
+                  onChange={(e) => setVideo(e.target.files[0])}
+                />
+              )}
               <Box
                 sx={{
                   width: "50%",
@@ -154,6 +242,7 @@ const Upload = () => {
                     marginTop: "10px",
                     backgroundColor: "#F35588",
                   }}
+                  onClick={handleUpload}
                 >
                   Upload
                 </Button>

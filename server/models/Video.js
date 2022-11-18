@@ -38,6 +38,11 @@ const VideoSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    isSponsorred: {
+      type: Boolean,
+      default: "false",
+
+    },
     typeOfQuestion:{
       type: [String],
       default: [],

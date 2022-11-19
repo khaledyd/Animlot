@@ -70,7 +70,7 @@ export const addView = async (req, res, next) => {
 
 export const random = async (req, res, next) => {
   try {
-    const videos = await Video.aggregate([{ $sample: { size: 40 } }]);
+    const videos = await Video.aggregate([{ $sample: { size: 2} }]);
     res.status(200).json(videos);
   } catch (err) {
     next(err);
@@ -136,3 +136,27 @@ export const isSponsorred = async (req, res) => {
 
   }
 };
+
+
+export const getallevents = async (req, res) => {
+  const username = req.query.user;
+  const catName = req.query.cat;
+  try {
+    let videos;
+    if (username) {
+      videos = await Video.find({ username });
+    } /*else if (catName) {
+      posts = await Post.find({
+        categories: {
+          $in: [catName],
+        },
+      });
+    }*/ else {
+      videos = await Video.find();
+    }
+    res.status(200).json(videos);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+

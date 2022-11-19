@@ -3,8 +3,10 @@ import { Box } from "@mui/system";
 import { CardMedia, Typography } from "@mui/material";
 import LGScard from "./LGScard";
 import Spcard from "./Spcard";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const Sponsored = () => {
+const Sponsored = ({ sponsorredVideos }) => {
   return (
     <Box
       width={"100%"}
@@ -16,16 +18,14 @@ const Sponsored = () => {
     >
       <Box display={"flex"} justifyContent={"space-between"}>
         <Box
-      
           sx={{
             marginRight: "20px",
             width: {
-                  
-                  md:"100%",
-                  sm:"100%",
-                  xs:"100%",
-                  lg:"75%"
-                  },
+              md: "100%",
+              sm: "100%",
+              xs: "100%",
+              lg: "75%",
+            },
           }}
         >
           <CardMedia
@@ -33,7 +33,6 @@ const Sponsored = () => {
             image="./images/ft.jpg"
             alt="green iguana"
             sx={{
-            
               height: "350px",
               objectFit: "cover",
               borderRadius: "10px",
@@ -43,8 +42,7 @@ const Sponsored = () => {
         </Box>
         <Box
           sx={{
-       
-            paddingLeft:"10px"
+            paddingLeft: "10px",
           }}
         >
           <Typography
@@ -56,18 +54,18 @@ const Sponsored = () => {
                 md: "none",
                 lg: "block",
               },
-              color:"#F35588",
-              marginBottom:"10px"
+              color: "#F35588",
+              marginBottom: "10px",
             }}
           >
             Sponsored
           </Typography>
-          <Box
-            sx={{
-            
-            }}
-          >
-            <Spcard />
+          <Box>
+            {sponsorredVideos.map((s)=>{
+              return (
+                <Spcard  sponsorredVideos={s}/>)
+
+            })}
           </Box>
         </Box>
       </Box>

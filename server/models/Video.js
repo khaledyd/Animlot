@@ -10,6 +10,10 @@ const VideoSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    fullname: {
+      type: String,
+ 
+    },
     desc: {
       type: String,
       required: true,
@@ -43,7 +47,7 @@ const VideoSchema = new mongoose.Schema(
       default: "false",
 
     },
-    typeOfQuestion:{
+ eOfQuestion:{
       type: [String],
       default: [],
       required: true,

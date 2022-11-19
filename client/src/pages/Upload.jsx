@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import Sidebar from "../components/dashboard/Sidebar";
 import {
   Button,
+  Checkbox,
   InputLabel,
   MenuItem,
   Select,
@@ -19,19 +20,30 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+import { useDispatch } from "react-redux";
+import { loginFailure, loginStart, loginSuccess } from "../Redux/userSlice";
+import { useSelector } from "react-redux";
 
 const Upload = () => {
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
+
   const [img, setImg] = useState(undefined);
   const [video, setVideo] = useState(undefined);
   const [imgPerc, setImgPerc] = useState(0);
   const [videoPerc, setVideoPerc] = useState(0);
   const [inputs, setInputs] = useState({});
   const [tags, setTags] = useState([]);
+  const [isSponsorred, setisSponsorred] = useState(false);
+  const [fullname, setFullname] = useState(currentUser.fullname);
 
   const handleChange = (e) => {
     setInputs((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
+  };
+  const handleCheck = (event) => {
+    setisSponsorred(event.target.checked);
   };
   const uploadFile = (file, urlType) => {
     const storage = getStorage(app);
@@ -79,7 +91,7 @@ const Upload = () => {
 
   const handleUpload = async (e) => {
     e.preventDefault();
-    const res = await axios.post("/videos", { ...inputs });
+    const res = await axios.post("/videos", { ...inputs, isSponsorred ,fullname  });
 
     console.log(res.data);
   };
@@ -235,6 +247,15 @@ const Upload = () => {
                   width: "50%",
                 }}
               >
+                <InputLabel
+                  id="demo-simple-select-label"
+                  sx={{
+                    marginTop: "10px",
+                  }}
+                >
+                  checkh to sponsor
+                </InputLabel>
+                <Checkbox onChange={handleCheck} />
                 <Button
                   variant="contained"
                   sx={{

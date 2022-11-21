@@ -19,9 +19,6 @@ const Home = () => {
       const data = await res.data;
       let filtred = [];
       
-
-
-
       for (let i = 0; i < data.length; i++) {
         if (data[i].isSponsorred == true) {
          

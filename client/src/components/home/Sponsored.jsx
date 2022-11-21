@@ -5,8 +5,10 @@ import LGScard from "./LGScard";
 import Spcard from "./Spcard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Slider from "./Slider";
 
 const Sponsored = ({ sponsorredVideos }) => {
+
   return (
     <Box
       width={"100%"}
@@ -26,19 +28,22 @@ const Sponsored = ({ sponsorredVideos }) => {
               xs: "100%",
               lg: "75%",
             },
+            backgroundColor:"red",
+            height: "350px",
           }}
         >
-          <CardMedia
+          {/*<CardMedia
             component="img"
             image="./images/ft.jpg"
             alt="green iguana"
             sx={{
-              height: "350px",
+    
               objectFit: "cover",
               borderRadius: "10px",
               paddingLeft: "20px",
             }}
-          />
+          />*/}
+          <Slider/>
         </Box>
         <Box
           sx={{
@@ -61,10 +66,8 @@ const Sponsored = ({ sponsorredVideos }) => {
             Sponsored
           </Typography>
           <Box>
-            {sponsorredVideos.map((s)=>{
-              return (
-                <Spcard  sponsorredVideos={s}/>)
-
+            {sponsorredVideos.map((s) => {
+              return <Spcard sponsorredVideos={s} />;
             })}
           </Box>
         </Box>

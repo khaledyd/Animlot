@@ -7,8 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Slider from "./Slider";
 
-const Sponsored = ({ sponsorredVideos }) => {
-
+const Sponsored = ({ sponsorredVideos, sponsorredVideo }) => {
   return (
     <Box
       width={"100%"}
@@ -28,7 +27,7 @@ const Sponsored = ({ sponsorredVideos }) => {
               xs: "100%",
               lg: "75%",
             },
-            backgroundColor:"red",
+            backgroundColor: "#F35588",
             height: "350px",
           }}
         >
@@ -43,7 +42,11 @@ const Sponsored = ({ sponsorredVideos }) => {
               paddingLeft: "20px",
             }}
           />*/}
-          <Slider/>
+          {sponsorredVideos.map((m)=>{
+            return(
+              <Slider  sponsorredVideos={m} />
+            )
+          })}
         </Box>
         <Box
           sx={{
@@ -72,7 +75,6 @@ const Sponsored = ({ sponsorredVideos }) => {
           </Box>
         </Box>
       </Box>
-
       <Box
         display={"flex"}
         sx={{
@@ -83,10 +85,9 @@ const Sponsored = ({ sponsorredVideos }) => {
           width: "100%",
         }}
       >
-        <LGScard />
-        <LGScard />
-        <LGScard />
-        <LGScard />
+        {sponsorredVideo.map((sp) => {
+          return <LGScard sponsorredVideo={sp} />;
+        })}
       </Box>
     </Box>
   );

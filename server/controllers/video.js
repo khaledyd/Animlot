@@ -159,4 +159,12 @@ export const getallevents = async (req, res) => {
     res.status(500).json(err);
   }
 };
-
+//GET POST
+export const getVideoById = async (req, res) => {
+  try {
+    const videos = await Video.findById(req.params.id);
+    res.status(200).json(videos);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};

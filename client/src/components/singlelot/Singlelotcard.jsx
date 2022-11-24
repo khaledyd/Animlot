@@ -11,8 +11,10 @@ import Link from "@mui/joy/Link";
 import Favorite from "@mui/icons-material/Favorite";
 import Visibility from "@mui/icons-material/Visibility";
 import CreateNewFolder from "@mui/icons-material/CreateNewFolder";
+import { CardMedia } from "@mui/material";
+import { height } from "@mui/system";
 
-export default function DribbbleShot() {
+export default function DribbbleShot({ videos }) {
   return (
     <Box
       display={"flex"}
@@ -35,7 +37,6 @@ export default function DribbbleShot() {
             sm: "95%",
             xs: "95%",
           },
-
         }}
         display={"flex"}
         alignItems={"center"}
@@ -55,72 +56,21 @@ export default function DribbbleShot() {
             "--Card-padding": "0px",
           }}
         >
-          <Box sx={{ position: "relative" }}>
-            <AspectRatio ratio="2.7/1">
-              <figure>
-                <img
-                  src="https://images.pexels.com/photos/5430750/pexels-photo-5430750.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                  srcSet="https://images.pexels.com/photos/5430750/pexels-photo-5430750.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                  loading="lazy"
-                  alt="Yosemite by Casey Horner"
-                />
-              </figure>
-            </AspectRatio>
-            <CardCover
-              className="gradient-cover"
-              sx={{
-                "&:hover, &:focus-within": {
-                  opacity: 1,
-                },
-                opacity: 0,
-                transition: "0.1s ease-in",
-                background:
-                  "linear-gradient(180deg, transparent 62%, rgba(0,0,0,0.00345888) 63.94%, rgba(0,0,0,0.014204) 65.89%, rgba(0,0,0,0.0326639) 67.83%, rgba(0,0,0,0.0589645) 69.78%, rgba(0,0,0,0.0927099) 71.72%, rgba(0,0,0,0.132754) 73.67%, rgba(0,0,0,0.177076) 75.61%, rgba(0,0,0,0.222924) 77.56%, rgba(0,0,0,0.267246) 79.5%, rgba(0,0,0,0.30729) 81.44%, rgba(0,0,0,0.341035) 83.39%, rgba(0,0,0,0.367336) 85.33%, rgba(0,0,0,0.385796) 87.28%, rgba(0,0,0,0.396541) 89.22%, rgba(0,0,0,0.4) 91.17%)",
-              }}
-            >
-              {/* The first box acts as a container that inherits style from the CardCover */}
-              <Box>
-                <Box
+          <Box sx={{ position: "relative"  }}>
+            <AspectRatio ratio="2/1">
+             
+                <CardMedia
+                  component="video"
+                  controls
+                  src={videos.videoUrl}
                   sx={{
-                    p: 2,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1.5,
-                    flexGrow: 1,
-                    alignSelf: "flex-end",
+                    objectFit: "cover",
+                    width:"100%",
+                    height:"100%"
                   }}
-                >
-                  <Typography
-                    level="h2"
-                    noWrap
-                    sx={{
-                      fontSize: "lg",
-                      backgroundColor: "black",
-                      padding: "3px 3px",
-                    }}
-                  >
-                    <Link
-                      overlay
-                      underline="none"
-                      sx={{
-                        color: "#fff",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        display: "block",
-                      }}
-                    >
-                      20:10
-                    </Link>
-                  </Typography>
-                  <IconButton size="sm" color="neutral" sx={{ ml: "auto" }}>
-                    <CreateNewFolder />
-                  </IconButton>
-                  <IconButton size="sm" color="neutral">
-                    <Favorite />
-                  </IconButton>
-                </Box>
-              </Box>
-            </CardCover>
+                />
+       
+            </AspectRatio>
           </Box>
           <Box
             sx={{
@@ -147,12 +97,12 @@ export default function DribbbleShot() {
               <Box display={"flex"}>
                 <Typography
                   sx={{
-                    fontSize: "sm",
+                    fontSize: "20px",
                     fontWeight: "md",
                     fontFamily: "Roboto , sans-serif",
                   }}
                 >
-                  National Park
+          {videos.fullname}
                 </Typography>
                 <Box
                   sx={{
@@ -170,11 +120,11 @@ export default function DribbbleShot() {
               <Typography
                 variant="h6"
                 sx={{
-                  fontSize: "20px",
+                  fontSize: "30px",
                   fontFamily: "Roboto , sans-serif",
                 }}
               >
-                what is life ?
+        {videos.title}
               </Typography>
               <Typography variant="h6">
                 2300

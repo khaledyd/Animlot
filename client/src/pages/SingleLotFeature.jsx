@@ -2,72 +2,34 @@ import { Box } from "@mui/system";
 import React from "react";
 import Mininav from "../components/Mininav";
 import BganimlotCard from "../components/home/BganimlotCard";
-import Singlelotcard from "../components/singlelot/Singlelotcard";
+import SingleLotCardFeature from "../components/singlelot/SingleLotCardFeature";
 import { Avatar, Button, TextField, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Commentcard from "./../components/singlelot/Commentcard";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useState, useEffect } from "react";
+import { useState, useEffect   } from "react";
 import { useLocation } from "react-router";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { dislike, fetchSuccess, like } from "../Redux/videoSlice";
-const SingleLot = () => {
-  const [videos, setVideo] = useState({});
-  const [subs, setsubs] = useState({});
-  const location = useLocation();
-  const path = location.pathname.split("/")[2];
-  const { currentUser } = useSelector((state) => state.user);
-  const { currentVideo } = useSelector((state) => state.video);
-  const dispatch = useDispatch();
 
-  console.log(path);
-  let id = videos.userId;
-  /*useEffect(() => {
+const SingleLot = () => {
+  const [videos , setVideo] = useState({})
+  const location = useLocation()
+  const path = location.pathname.split("/")[2]
+
+  console.log(path)
+  useEffect(() => {
     const getPost = async () => {
       const res = await axios.get("/videos/" + path);
-      const chanel = await axios.get(`/users/" ${res.data.userId}`);
-      console.log(chanel.data);
+      console.log(res.data);
       setVideo(res.data);
     };
     getPost();
-  }, [path]);*/
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const videoRes = await axios.get(`/videos/${path}`);
-        setVideo(videoRes.data);
-        const channelRes = await axios.get(
-          `/users/find/${videoRes.data.userId}`
-        );
-        console.log(channelRes);
-
-        setsubs(channelRes.data);
-        dispatch(fetchSuccess(videoRes.data));
-      } catch (err) {}
-    };
-    fetchData();
   }, [path]);
-  const handleLike = async () => {
-    await axios.put(`/users/like/${currentVideo._id}`);
-    dispatch(like(currentUser._id));
-  };
-  const handleDislike = async () => {
-    await axios.put(`/users/dislike/${currentVideo._id}`);
-    dispatch(dislike(currentUser._id));
-  };
-
-  const handleSub = async () => {
-    currentUser.subscribedUsers.includes(channel._id)
-      ? await axios.put(`/users/unsub/${channel._id}`)
-      : await axios.put(`/users/sub/${channel._id}`);
-    dispatch(subscription(channel._id));
-  };
-
   return (
     <Box>
       <Mininav />
-      <Singlelotcard videos={videos} />
+      <SingleLotCardFeature videos = {videos}  />
+      
       <Box
         display={"flex"}
         justifyContent={"space-between"}
@@ -113,7 +75,7 @@ const SingleLot = () => {
                 lineHeight: "32px",
               }}
             >
-              {videos.desc}
+             {videos.desc}
             </Typography>
           </Box>
           <Box
@@ -149,7 +111,7 @@ const SingleLot = () => {
                   marginTop: "10px",
                   height: "55px",
                   width: "20%",
-                  fontSize: "15px",
+                  fontSize:"15px"
                 }}
               >
                 Comment
@@ -191,7 +153,6 @@ const SingleLot = () => {
                   color: "#FFF",
                   marginRight: "20px",
                 }}
-                onClick={handleSub}
               >
                 Follow
               </Button>
@@ -218,7 +179,7 @@ const SingleLot = () => {
                   color: "#F35588",
                 }}
               >
-                {subs.subscribers}
+                200k
               </Typography>
             </Box>
           </Box>{" "}

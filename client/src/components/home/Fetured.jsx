@@ -6,7 +6,7 @@ import Spcard from "./Spcard";
 import Flgcard from "./Flgcard";
 import Fcard from "./Fcard";
 
-const Sponsored = () => {
+const Sponsored = ({ featureds, featured }) => {
   return (
     <Box
       width={"100%"}
@@ -18,16 +18,14 @@ const Sponsored = () => {
     >
       <Box display={"flex"} justifyContent={"space-between"}>
         <Box
-      
           sx={{
             marginRight: "20px",
             width: {
-                  
-                  md:"100%",
-                  sm:"100%",
-                  xs:"100%",
-                  lg:"75%"
-                  },
+              md: "100%",
+              sm: "100%",
+              xs: "100%",
+              lg: "75%",
+            },
           }}
         >
           <CardMedia
@@ -35,7 +33,6 @@ const Sponsored = () => {
             image="./images/spimg.jpg"
             alt="green iguana"
             sx={{
-            
               height: "350px",
               objectFit: "cover",
               borderRadius: "10px",
@@ -46,7 +43,7 @@ const Sponsored = () => {
         <Box
           sx={{
             paddingRight: "10px",
-            paddingLeft:"10px"
+            paddingLeft: "10px",
           }}
         >
           <Typography
@@ -58,18 +55,18 @@ const Sponsored = () => {
                 md: "none",
                 lg: "block",
               },
-              color:"#F35588",
-              marginBottom:"10px"
+              color: "#F35588",
+              marginBottom: "10px",
             }}
           >
             Featured
           </Typography>
-          <Box
-            sx={{
-            
-            }}
-          >
-         <Flgcard/>
+          <Box sx={{}}>
+            {featured.map((f)=>{
+              return(
+                <Flgcard featured={f} />
+              )
+            })}
           </Box>
         </Box>
       </Box>
@@ -84,15 +81,9 @@ const Sponsored = () => {
           width: "100%",
         }}
       >
-       <Fcard/>
-       <Fcard/>
-       <Fcard/>
-       <Fcard/>
-       <Fcard/>
-       <Fcard/>
-       <Fcard/>
-       <Fcard/>
-       
+        {featureds.map((fs) => {
+          return <Fcard  featureds ={fs}/>;
+        })}
       </Box>
     </Box>
   );

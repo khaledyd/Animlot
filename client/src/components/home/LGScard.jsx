@@ -7,12 +7,14 @@ import CardCover from "@mui/joy/CardCover";
 import Chip from "@mui/joy/Chip";
 import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
-import Link from "@mui/joy/Link";
+import { Link } from "react-router-dom";
 import Favorite from "@mui/icons-material/Favorite";
 import Visibility from "@mui/icons-material/Visibility";
 import CreateNewFolder from "@mui/icons-material/CreateNewFolder";
+import { useState, useEffect } from "react";
+import { CardMedia } from "@mui/material";
 
-export default function DribbbleShot() {
+export default function DribbbleShot({ sponsorredVideo }) {
   return (
     <Card
       sx={{
@@ -30,71 +32,13 @@ export default function DribbbleShot() {
       }}
     >
       <Box sx={{ position: "relative" }}>
-        <AspectRatio ratio="4/3">
-          <figure>
-            <img
-              src="https://images.pexels.com/photos/13488939/pexels-photo-13488939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              srcSet="https://images.pexels.com/photos/13488939/pexels-photo-13488939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              loading="lazy"
-              alt="Yosemite by Casey Horner"
-            />
-          </figure>
-        </AspectRatio>
-        <CardCover
-          className="gradient-cover"
-          sx={{
-            "&:hover, &:focus-within": {
-              opacity: 1,
-            },
-            opacity: 0,
-            transition: "0.1s ease-in",
-            background:
-              "linear-gradient(180deg, transparent 62%, rgba(0,0,0,0.00345888) 63.94%, rgba(0,0,0,0.014204) 65.89%, rgba(0,0,0,0.0326639) 67.83%, rgba(0,0,0,0.0589645) 69.78%, rgba(0,0,0,0.0927099) 71.72%, rgba(0,0,0,0.132754) 73.67%, rgba(0,0,0,0.177076) 75.61%, rgba(0,0,0,0.222924) 77.56%, rgba(0,0,0,0.267246) 79.5%, rgba(0,0,0,0.30729) 81.44%, rgba(0,0,0,0.341035) 83.39%, rgba(0,0,0,0.367336) 85.33%, rgba(0,0,0,0.385796) 87.28%, rgba(0,0,0,0.396541) 89.22%, rgba(0,0,0,0.4) 91.17%)",
-          }}
-        >
-          {/* The first box acts as a container that inherits style from the CardCover */}
-          <Box>
-            <Box
-              sx={{
-                p: 2,
-                display: "flex",
-                alignItems: "center",
-                gap: 1.5,
-                flexGrow: 1,
-                alignSelf: "flex-end",
-              }}
-            >
-              <Typography
-                level="h2"
-                noWrap
-                sx={{
-                  fontSize: "lg",
-                  backgroundColor: "black",
-                  padding: "3px 3px",
-                }}
-              >
-                <Link
-                  overlay
-                  underline="none"
-                  sx={{
-                    color: "#fff",
-                    textOverflow: "ellipsis",
-                    overflow: "hidden",
-                    display: "block",
-                  }}
-                >
-                  20:10
-                </Link>
-              </Typography>
-              <IconButton size="sm" color="neutral" sx={{ ml: "auto" }}>
-                <CreateNewFolder />
-              </IconButton>
-              <IconButton size="sm" color="neutral">
-                <Favorite />
-              </IconButton>
-            </Box>
-          </Box>
-        </CardCover>
+        <Link to={`/videoid/${sponsorredVideo._id}`}>
+          <CardMedia
+            component="video"
+            controls
+            src={sponsorredVideo.videoUrl}
+          />
+        </Link>
       </Box>
       <Box
         sx={{
@@ -104,7 +48,8 @@ export default function DribbbleShot() {
 
           padding: "10px 10px",
           borderRadius: "15px",
-          border: "0.1px solid black",
+
+          boxShadow: " 0 3px 10px rgb(0 0 0 / 0.2)",
         }}
       >
         <Avatar
@@ -121,7 +66,7 @@ export default function DribbbleShot() {
                 fontFamily: "Roboto , sans-serif",
               }}
             >
-              National Park
+              {sponsorredVideo.fullname}
             </Typography>
             <Box
               sx={{
@@ -143,7 +88,7 @@ export default function DribbbleShot() {
               fontFamily: "Roboto , sans-serif",
             }}
           >
-            what is life ?
+            {sponsorredVideo.title}
           </Typography>
           <Typography variant="h6">
             2300

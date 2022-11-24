@@ -7,7 +7,6 @@ import CardCover from "@mui/joy/CardCover";
 import Chip from "@mui/joy/Chip";
 import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
-import Link from "@mui/joy/Link";
 import Favorite from "@mui/icons-material/Favorite";
 import Visibility from "@mui/icons-material/Visibility";
 import CreateNewFolder from "@mui/icons-material/CreateNewFolder";
@@ -15,7 +14,8 @@ import { useDispatch } from "react-redux";
 import { loginFailure, loginStart, loginSuccess } from "../../Redux/userSlice";
 import { useSelector } from "react-redux";
 import { CardMedia } from "@mui/material";
-import ReactPlayer from 'react-player'
+import ReactPlayer from "react-player";
+import { Link } from "react-router-dom";
 
 export default function DribbbleShot({ sponsorredVideos }) {
   const dispatch = useDispatch();
@@ -38,9 +38,14 @@ export default function DribbbleShot({ sponsorredVideos }) {
       }}
     >
       <Box sx={{ position: "relative" }}>
-      <CardMedia component="video" controls src={sponsorredVideos.videoUrl} />
+        <Link to={`/videoid/${sponsorredVideos._id}`}>
+          <CardMedia
+            component="video"
+            controls
+            src={sponsorredVideos.videoUrl}
+          />
+        </Link>
       </Box>
-
 
       <Box
         sx={{
@@ -50,7 +55,7 @@ export default function DribbbleShot({ sponsorredVideos }) {
 
           padding: "10px 10px",
           borderRadius: "15px",
-          border: "0.1px solid black",
+          boxShadow: " 0 3px 10px rgb(0 0 0 / 0.2)",
         }}
       >
         <Avatar

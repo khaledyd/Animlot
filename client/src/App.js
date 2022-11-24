@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Upload from "./pages/Upload";
 import Settings from "./pages/Settings";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SingleLotFeature from "./pages/SingleLotFeature"
 
 export default function App() {
   const { currentUser } = useSelector((state) => state.user);
@@ -39,8 +40,8 @@ export default function App() {
           <Route path="/Dashboard"   element={currentUser ? <Dashboard /> : <Login />} />
           <Route path="/Settings"   element={currentUser ? <Settings /> : <Login />} />
           <Route path="/Upload"   element={currentUser ? <Upload /> : <Login />} />
-          <Route path="/SingleLot"   element={<SingleLot />} />
-          
+          <Route path="/videoid/:videoid"   element={<SingleLot />} />
+          <Route path="/videoidd/:videoid"   element={<SingleLotFeature />} />
 
         </Routes>
       </BrowserRouter>

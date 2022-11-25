@@ -1,12 +1,15 @@
+import react from 'react';
 import { Box } from "@mui/system";
 import React from "react";
 import { Avatar, Button, TextField, Typography } from "@mui/material";
 
-const SingleLot = () => {
+const SingleLot = ({ commentlists }) => {
   return (
-    <Box sx={{
-        marginBottom:"30px"
-    }}>
+    <Box
+      sx={{
+        marginBottom: "30px",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -43,22 +46,10 @@ const SingleLot = () => {
             sx={{
               fontSize: "15px",
               fontFamily: "Roboto , sans-serif",
-              color: "#F35588",
-            }}
-          >
-            14 days ago
-          </Typography>
-          <Typography
-            variant="h6"
-            sx={{
-              fontSize: "15px",
-              fontFamily: "Roboto , sans-serif",
               color: "#000",
             }}
           >
-            orem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-         
+            {commentlists.describtion}
           </Typography>
         </Box>
       </Box>

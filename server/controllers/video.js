@@ -70,7 +70,7 @@ export const addView = async (req, res, next) => {
 
 export const random = async (req, res, next) => {
   try {
-    const videos = await Video.aggregate([{ $sample: { size: 2} }]);
+    const videos = await Video.aggregate([{ $sample: { size: 2 } }]);
     res.status(200).json(videos);
   } catch (err) {
     next(err);
@@ -126,17 +126,13 @@ export const search = async (req, res, next) => {
 };
 
 export const isSponsorred = async (req, res) => {
-
   try {
-    const video = await Video.find({ isSponsorred:"true"}.exec());
+    const video = await Video.find({ isSponsorred: "true" }.exec());
     res.status(200).json(video);
-
   } catch (err) {
     next(err);
-
   }
 };
-
 
 export const getallevents = async (req, res) => {
   const username = req.query.user;
@@ -166,5 +162,44 @@ export const getVideoById = async (req, res) => {
     res.status(200).json(videos);
   } catch (err) {
     res.status(500).json(err);
+  }
+};
+
+export const newcooment = async (req, res) => {
+  try {
+    const comment = await Video.findById(req.params.id);
+    if (!comment) {
+      res.status(403).json("wrong event id");
+    } else {
+      try {
+        const newcomment = await Video.findByIdAndUpdate(
+          req.params.id,
+          {
+            $push: req.body,
+          },
+          { new: true }
+        );
+        res.status(200).json(newcomment);
+      } catch (err) {
+        next();
+      }
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+//
+export const fechusersvideos = async (req, res) => {
+  const userId = req.params.id;
+  try {
+    if (userId) {
+      const videos = await Video.find({ userId});
+      res.status(200).json(videos);
+    } else {
+      res.status(400).json("wrong user id");
+    }
+  } catch (err) {
+    next();
   }
 };

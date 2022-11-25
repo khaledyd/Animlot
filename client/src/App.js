@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useSelector } from "react-redux";
+import Search from "./pages/Search"
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -41,7 +42,8 @@ export default function App() {
           <Route path="/Settings"   element={currentUser ? <Settings /> : <Login />} />
           <Route path="/Upload"   element={currentUser ? <Upload /> : <Login />} />
           <Route path="/videoid/:videoid"   element={<SingleLot />} />
-          <Route path="/videoidd/:videoid"   element={<SingleLotFeature />} />
+          <Route path="/videoid/:videoid"   element={<SingleLotFeature />} />
+          <Route path="/Search"   element={<Search />} />
 
         </Routes>
       </BrowserRouter>

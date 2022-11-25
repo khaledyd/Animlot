@@ -10,9 +10,14 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+import { useState } from "react";
+
 import SearchIcon from "@mui/icons-material/Search";
+import { Link, useNavigate } from "react-router-dom";
 
 const Nav = () => {
+  const [search , setSearch] = useState("")
+  const navigate = useNavigate()
   return (
     <Box
       display={"flex"}
@@ -99,6 +104,7 @@ const Nav = () => {
             outline: "none",
             fontSize: "28px",
           }}
+          onChange={(e)=> setSearch(e.target.value)}
         />
         <SearchIcon
           sx={{
@@ -107,6 +113,7 @@ const Nav = () => {
             color: "#AA3B76",
             zIndex: "1",
           }}
+
         />
       </Box>
 

@@ -9,11 +9,14 @@ import { signInWithPopup } from "firebase/auth";
 import { async } from "@firebase/util";
 import { useDispatch } from "react-redux";
 import { loginFailure, loginStart, loginSuccess } from "../Redux/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   const signInWithGoogle = async () => {
     dispatch(loginStart());
@@ -44,6 +47,8 @@ const Login = () => {
     try {
       const res = await axios.post("/auth/signin/", data);
       dispatch(loginSuccess(res.data));
+      navigate("/")
+
 
       console.log(res.data);
     } catch (err) {

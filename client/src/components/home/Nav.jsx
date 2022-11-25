@@ -3,8 +3,14 @@ import Box from "@mui/material/Box";
 import { Button, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import CardMedia from "@mui/material/CardMedia";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Link from "@mui/material/Link";
 
 const Nav = () => {
+  const navigare = useNavigate();
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <Box
       display={"flex"}
@@ -19,7 +25,7 @@ const Nav = () => {
           lg: "center",
           md: "center",
         },
-        width:"100%"
+        width: "100%",
       }}
     >
       <Box
@@ -34,7 +40,7 @@ const Nav = () => {
           image="./images/animlot-logo.png"
           alt="green iguana"
           sx={{
-         width:"130px"
+            width: "130px",
           }}
         />
       </Box>
@@ -62,30 +68,43 @@ const Nav = () => {
         <Typography variant="h6">Wtach</Typography>
         <Typography variant="h6">Features</Typography>
 
-        <Box display={"flex"} alignItems={"center"}
-        sx={{
-            flexDirection:{
-                sm: "column-reverse",xs: "column-reverse", md:"row"
-            }
-        }}
+        <Box
+          display={"flex"}
+          alignItems={"center"}
+          sx={{
+            flexDirection: {
+              sm: "column-reverse",
+              xs: "column-reverse",
+              md: "row",
+            },
+          }}
         >
           <Typography variant="h6" marginRight={"10px"} alignSelf={"baseline"}>
-            <PersonIcon sx={{
-         
-        
-            }} />
-            Log in
+            <PersonIcon sx={{}} />
+            {currentUser ? (
+              <Link href={"/dashboard"} underline="none" sx={{
+                      color: "#AA3B75",
+              }}> 
+                {currentUser.fullname}
+              </Link>
+            ) : (
+              "log in"
+            )}
           </Typography>
-          <Button
-            sx={{
-              backgroundColor: "#AA3B75",
-              color: "white",
-              borderColor: "white",
-              borderRadius: "10px",
-            }}
-          >
-            Join
-          </Button>
+          {currentUser ? (
+            <Button
+              sx={{
+                backgroundColor: "#AA3B75",
+                color: "white",
+                borderColor: "white",
+                borderRadius: "10px",
+              }}
+            >
+              Upload
+            </Button>
+          ) : (
+            ""
+          )}
         </Box>
       </Box>
     </Box>

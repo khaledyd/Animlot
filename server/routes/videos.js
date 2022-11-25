@@ -1,5 +1,5 @@
 import express from "express";
-import { addVideo, addView, getByTag, getVideo, random, search, sub, trend , isSponsorred , getallevents , getVideoById} from "../controllers/video.js";
+import { addVideo, addView, getByTag, getVideo, random, search, sub, trend , isSponsorred , getallevents , getVideoById , newcooment ,fechusersvideos } from "../controllers/video.js";
 import { verifyToken } from "../verifyToken.js";
 
 const router = express.Router();
@@ -18,6 +18,8 @@ router.get("/search", search)
 router.get("/isSponsorred", isSponsorred)
 router.get("/", getallevents)
 router.get("/:id", getVideoById)
+router.put("/comments/:id", newcooment);
+router.get("/getusers/:id",fechusersvideos)
 
 
 

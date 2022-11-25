@@ -12,31 +12,37 @@ import { useLocation } from "react-router";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { dislike, fetchSuccess, like } from "../Redux/videoSlice";
+import { subscription } from ".././Redux/userSlice";
+
 const SingleLot = () => {
   const [videos, setVideo] = useState({});
+  console.log(videos);
   const [subs, setsubs] = useState({});
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const { currentUser } = useSelector((state) => state.user);
   const { currentVideo } = useSelector((state) => state.video);
+  let data = currentUser.fullname;
+  const [comments, setcomments] = useState([
+    {
+      describtion: "",
+      objectId: "_id",
+      username: data,
+    },
+  ]);
+  const [commentlists, setcommentlists] = useState([]);
+  console.log(commentlists);
+  const [username, setusername] = useState("");
   const dispatch = useDispatch();
 
   console.log(path);
-  let id = videos.userId;
-  /*useEffect(() => {
-    const getPost = async () => {
-      const res = await axios.get("/videos/" + path);
-      const chanel = await axios.get(`/users/" ${res.data.userId}`);
-      console.log(chanel.data);
-      setVideo(res.data);
-    };
-    getPost();
-  }, [path]);*/
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const videoRes = await axios.get(`/videos/${path}`);
         setVideo(videoRes.data);
+        setcommentlists(videoRes.data.comments);
         const channelRes = await axios.get(
           `/users/find/${videoRes.data.userId}`
         );
@@ -48,22 +54,34 @@ const SingleLot = () => {
     };
     fetchData();
   }, [path]);
+
   const handleLike = async () => {
     await axios.put(`/users/like/${currentVideo._id}`);
     dispatch(like(currentUser._id));
   };
-  const handleDislike = async () => {
-    await axios.put(`/users/dislike/${currentVideo._id}`);
-    dispatch(dislike(currentUser._id));
-  };
 
   const handleSub = async () => {
-    currentUser.subscribedUsers.includes(channel._id)
-      ? await axios.put(`/users/unsub/${channel._id}`)
-      : await axios.put(`/users/sub/${channel._id}`);
-    dispatch(subscription(channel._id));
+    currentUser.subscribedUsers.includes(subs._id)
+      ? await axios.put(`/users/unsub/${subs._id}`)
+      : await axios.put(`/users/sub/${subs._id}`);
+    dispatch(subscription(subs._id));
   };
 
+  const addcoment = async (e) => {
+    e.preventDefault();
+
+    const res = await axios.put("/videos/comments/" + path, {
+      comments,
+    });
+    console.log(res);
+  };
+
+  const handleChange = (e) => {
+    setcomments((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+  const commentlist = [videos];
   return (
     <Box>
       <Mininav />
@@ -141,7 +159,10 @@ const SingleLot = () => {
                   width: "80%",
                   marginTop: "10px",
                 }}
+                name="describtion"
+                onChange={handleChange}
               ></TextField>
+
               <Button
                 sx={{
                   backgroundColor: "#F35588",
@@ -151,15 +172,15 @@ const SingleLot = () => {
                   width: "20%",
                   fontSize: "15px",
                 }}
+                onClick={addcoment}
               >
                 Comment
               </Button>
+          
             </Box>
-            <Commentcard />
-            <Commentcard />
-            <Commentcard />
-            <Commentcard />
-            <Commentcard />
+            {commentlists.map((m) => {
+              return <Commentcard commentlists={m} />;
+            })}
           </Box>
         </Box>
         <Box>
@@ -174,7 +195,9 @@ const SingleLot = () => {
                   fontSize: "40px",
                   paddingRight: "20px",
                   color: "#F35588",
+                  cursor: "pointer",
                 }}
+                onClick={handleLike}
               />
               <Typography
                 sx={{
@@ -183,7 +206,7 @@ const SingleLot = () => {
                   color: "#F35588",
                 }}
               >
-                100k
+
               </Typography>
               <Button
                 sx={{

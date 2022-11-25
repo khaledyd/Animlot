@@ -1,5 +1,20 @@
 import mongoose from "mongoose";
-
+const commentSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: String,
+      required: true,
+    },
+    username: {
+      type: String,
+    },
+    describtion: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 const VideoSchema = new mongoose.Schema(
   {
     userId: {
@@ -12,7 +27,6 @@ const VideoSchema = new mongoose.Schema(
     },
     fullname: {
       type: String,
- 
     },
     desc: {
       type: String,
@@ -45,15 +59,17 @@ const VideoSchema = new mongoose.Schema(
     isSponsorred: {
       type: Boolean,
       default: "false",
-
     },
- eOfQuestion:{
+    eOfQuestion: {
       type: [String],
       default: [],
       required: true,
-
-
-    }
+    },
+    subscribers: {
+      type: Number,
+      default: 0,
+    },
+    comments: [commentSchema],
   },
   { timestamps: true }
 );

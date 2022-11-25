@@ -2,11 +2,13 @@ import { Box } from "@mui/system";
 import React from "react";
 import { Avatar, Button, TextField, Typography } from "@mui/material";
 
-const SingleLot = ({videos}) => {
+const SingleLot = ({ videos }) => {
   return (
-    <Box sx={{
-        marginBottom:"30px"
-    }}>
+    <Box
+      sx={{
+        marginBottom: "30px",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -34,7 +36,7 @@ const SingleLot = ({videos}) => {
                 fontFamily: "Roboto , sans-serif",
               }}
             >
-{videos.fullname}
+              {videos.fullname}
             </Typography>
           </Box>
 
@@ -58,7 +60,6 @@ const SingleLot = ({videos}) => {
           >
             orem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
-         
           </Typography>
         </Box>
       </Box>

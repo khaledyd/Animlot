@@ -2,7 +2,14 @@ import React from "react";
 import { Typography, Box, Button } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../Redux/userSlice";
 const Sidebar = () => {
+  const dispatch = useDispatch();
+  const hanldelogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <Box
       display={"flex"}
@@ -76,10 +83,15 @@ const Sidebar = () => {
         >
           Contact us{" "}
         </Typography>
-        <Button sx={{
+        <Button
+          sx={{
             backgroundColor: "#fff",
-            width:"max-content",
-        }}>Log out</Button>
+            width: "max-content",
+          }}
+          onClick={hanldelogout}
+        >
+          Log out
+        </Button>
       </Box>
     </Box>
   );

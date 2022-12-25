@@ -56,21 +56,21 @@ export default function DribbbleShot({ videos }) {
             "--Card-padding": "0px",
           }}
         >
-          <Box sx={{ position: "relative"  }}>
-            <AspectRatio ratio="2/1">
-             
+          <Box sx={{ position: "relative" }}>
+            {videos && (
+              <AspectRatio ratio="2/1">
                 <CardMedia
                   component="video"
                   controls
                   src={videos.videoUrl}
                   sx={{
                     objectFit: "cover",
-                    width:"100%",
-                    height:"100%"
+                    width: "100%",
+                    height: "100%",
                   }}
                 />
-       
-            </AspectRatio>
+              </AspectRatio>
+            )}
           </Box>
           <Box
             sx={{
@@ -89,56 +89,58 @@ export default function DribbbleShot({ videos }) {
               size="lg"
               sx={{ "--Avatar-size": "3.5rem" }}
             />
-            <Box
-              display={"flex"}
-              flexDirection={"column"}
-              alignItems={"baseline"}
-            >
-              <Box display={"flex"}>
-                <Typography
-                  sx={{
-                    fontSize: "20px",
-                    fontWeight: "md",
-                    fontFamily: "Roboto , sans-serif",
-                  }}
-                >
-          {videos.fullname}
-                </Typography>
-                <Box
-                  sx={{
-                    backgroundColor: "#F35588",
-                    padding: "3px 10px",
-                    fontSize: "12px",
-                    marginLeft: "10px",
-                    color: "#fff",
-                  }}
-                >
-                  12:10
-                </Box>
-              </Box>
-
-              <Typography
-                variant="h6"
-                sx={{
-                  fontSize: "30px",
-                  fontFamily: "Roboto , sans-serif",
-                }}
+            {videos && (
+              <Box
+                display={"flex"}
+                flexDirection={"column"}
+                alignItems={"baseline"}
               >
-        {videos.title}
-              </Typography>
-              <Typography variant="h6">
-                2300
+                <Box display={"flex"}>
+                  <Typography
+                    sx={{
+                      fontSize: "20px",
+                      fontWeight: "md",
+                      fontFamily: "Roboto , sans-serif",
+                    }}
+                  >
+                    {videos.fullname}
+                  </Typography>
+                  <Box
+                    sx={{
+                      backgroundColor: "#F35588",
+                      padding: "3px 10px",
+                      fontSize: "12px",
+                      marginLeft: "10px",
+                      color: "#fff",
+                    }}
+                  >
+                    12:10
+                  </Box>
+                </Box>
+
                 <Typography
+                  variant="h6"
                   sx={{
-                    color: "#F35588",
-                    marginLeft: "2px",
+                    fontSize: "30px",
                     fontFamily: "Roboto , sans-serif",
                   }}
                 >
-                  views
+                  {videos.title}
                 </Typography>
-              </Typography>
-            </Box>
+                <Typography variant="h6">
+                  2300
+                  <Typography
+                    sx={{
+                      color: "#F35588",
+                      marginLeft: "2px",
+                      fontFamily: "Roboto , sans-serif",
+                    }}
+                  >
+                    views
+                  </Typography>
+                </Typography>
+              </Box>
+            )}
           </Box>
         </Card>
       </Box>

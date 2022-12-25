@@ -13,11 +13,14 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { dislike, fetchSuccess, like } from "../Redux/videoSlice";
 import { subscription } from ".././Redux/userSlice";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 
 const SingleLot = () => {
   const [videos, setVideo] = useState({});
   console.log(videos);
   const [subs, setsubs] = useState({});
+  const [likecount, setLikes] = useState([]);
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const { currentUser } = useSelector((state) => state.user);
@@ -35,7 +38,7 @@ const SingleLot = () => {
   const [username, setusername] = useState("");
   const dispatch = useDispatch();
 
-  console.log(path);
+  console.log(likecount.length);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,12 +46,14 @@ const SingleLot = () => {
         const videoRes = await axios.get(`/videos/${path}`);
         setVideo(videoRes.data);
         setcommentlists(videoRes.data.comments);
+        setLikes(videoRes.data.likes);
         const channelRes = await axios.get(
           `/users/find/${videoRes.data.userId}`
         );
         console.log(channelRes);
 
         setsubs(channelRes.data);
+
         dispatch(fetchSuccess(videoRes.data));
       } catch (err) {}
     };
@@ -58,6 +63,10 @@ const SingleLot = () => {
   const handleLike = async () => {
     await axios.put(`/users/like/${currentVideo._id}`);
     dispatch(like(currentUser._id));
+  };
+  const handleDislike = async () => {
+    await axios.put(`/users/dislike/${currentVideo._id}`);
+    dispatch(dislike(currentUser._id));
   };
 
   const handleSub = async () => {
@@ -122,17 +131,19 @@ const SingleLot = () => {
                 }}
               />
             </Typography>
-            <Typography
-              variant={"p"}
-              sx={{
-                paddingTop: "20px",
-                fontSize: "20px",
-                fontFamily: "Roboto, sans-serif",
-                lineHeight: "32px",
-              }}
-            >
-              {videos.desc}
-            </Typography>
+            {videos && (
+              <Typography
+                variant={"p"}
+                sx={{
+                  paddingTop: "20px",
+                  fontSize: "20px",
+                  fontFamily: "Roboto, sans-serif",
+                  lineHeight: "32px",
+                }}
+              >
+                {videos.desc}
+              </Typography>
+            )}
           </Box>
           <Box
             sx={{
@@ -176,7 +187,6 @@ const SingleLot = () => {
               >
                 Comment
               </Button>
-          
             </Box>
             {commentlists.map((m) => {
               return <Commentcard commentlists={m} />;
@@ -190,7 +200,7 @@ const SingleLot = () => {
               alignItems={"center"}
               justifyContent={"space-around"}
             >
-              <FavoriteIcon
+              <ThumbUpIcon
                 sx={{
                   fontSize: "40px",
                   paddingRight: "20px",
@@ -199,15 +209,27 @@ const SingleLot = () => {
                 }}
                 onClick={handleLike}
               />
-              <Typography
+              {videos && (
+                <Typography
+                  sx={{
+                    fontSize: "40px",
+                    paddingRight: "20px",
+                    color: "#F35588",
+                  }}
+                >
+                  {likecount.length}
+                </Typography>
+              )}
+              <ThumbDownAltIcon
                 sx={{
                   fontSize: "40px",
                   paddingRight: "20px",
-                  color: "#F35588",
+                  color: "gray",
+                  cursor: "pointer",
                 }}
-              >
+                onClick={handleDislike}
+              />
 
-              </Typography>
               <Button
                 sx={{
                   backgroundColor: "#F35588",
@@ -234,15 +256,17 @@ const SingleLot = () => {
               >
                 Followers
               </Typography>
-              <Typography
-                sx={{
-                  fontSize: "20px",
-                  paddingRight: "50px",
-                  color: "#F35588",
-                }}
-              >
-                {subs.subscribers}
-              </Typography>
+              {videos && (
+                <Typography
+                  sx={{
+                    fontSize: "20px",
+                    paddingRight: "50px",
+                    color: "#F35588",
+                  }}
+                >
+                  {subs.subscribers}
+                </Typography>
+              )}
             </Box>
           </Box>{" "}
         </Box>

@@ -14,7 +14,7 @@ import { verifyToken } from "../verifyToken.js";
 const router = express.Router();
 
 //update user
-router.put("/:id", verifyToken, update);
+router.put("/:id", update);
 
 //delete user
 router.delete("/:id", verifyToken, deleteUser);

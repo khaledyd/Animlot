@@ -7,13 +7,13 @@ import CardCover from "@mui/joy/CardCover";
 import Chip from "@mui/joy/Chip";
 import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Favorite from "@mui/icons-material/Favorite";
 import Visibility from "@mui/icons-material/Visibility";
 import CreateNewFolder from "@mui/icons-material/CreateNewFolder";
 import { CardMedia } from "@mui/material";
 
-export default function DribbbleShot({featured}) {
+export default function DribbbleShot({ featured }) {
   return (
     <Card
       sx={{
@@ -30,14 +30,13 @@ export default function DribbbleShot({featured}) {
         },
       }}
     >
- 
-      <Box sx={{ position: "relative" }}>
-        <Link to={`/videoid/${featured._id}`}>
-        <CardMedia component="video" controls src={featured.videoUrl} />
-        </Link>
-      
-      </Box>
-
+      {featured && (
+        <Box sx={{ position: "relative" }}>
+          <Link to={`/videoid/${featured._id}`}>
+            <CardMedia component="video" controls src={featured.videoUrl} />
+          </Link>
+        </Box>
+      )}
 
       <Box
         sx={{
@@ -47,7 +46,7 @@ export default function DribbbleShot({featured}) {
 
           padding: "10px 10px",
           borderRadius: "15px",
-          boxShadow: " 0 3px 10px rgb(0 0 0 / 0.2)"
+          boxShadow: " 0 3px 10px rgb(0 0 0 / 0.2)",
         }}
       >
         <Avatar
@@ -55,52 +54,58 @@ export default function DribbbleShot({featured}) {
           size="lg"
           sx={{ "--Avatar-size": "3.5rem" }}
         />
-        <Box display={"flex"} flexDirection={"column"} alignItems={"baseline"}>
-          <Box display={"flex"}>
-            <Typography
-              sx={{
-                fontSize: "sm",
-                fontWeight: "md",
-                fontFamily: "Roboto , sans-serif",
-              }}
-            >
-              {featured.fullname}
-            </Typography>
-            <Box
-              sx={{
-                backgroundColor: "#F35588",
-                padding: "3px 10px",
-                fontSize: "12px",
-                marginLeft: "10px",
-                color: "#fff",
-              }}
-            >
-              12:10
-            </Box>
-          </Box>
-
-          <Typography
-            variant="h6"
-            sx={{
-              fontSize: "20px",
-              fontFamily: "Roboto , sans-serif",
-            }}
+        {featured && (
+          <Box
+            display={"flex"}
+            flexDirection={"column"}
+            alignItems={"baseline"}
           >
-            {featured.title}
-          </Typography>
-          <Typography variant="h6">
-            2300
+            <Box display={"flex"}>
+              <Typography
+                sx={{
+                  fontSize: "sm",
+                  fontWeight: "md",
+                  fontFamily: "Roboto , sans-serif",
+                }}
+              >
+                {featured.fullname}
+              </Typography>
+              <Box
+                sx={{
+                  backgroundColor: "#F35588",
+                  padding: "3px 10px",
+                  fontSize: "12px",
+                  marginLeft: "10px",
+                  color: "#fff",
+                }}
+              >
+                12:10
+              </Box>
+            </Box>
+
             <Typography
+              variant="h6"
               sx={{
-                color: "#F35588",
-                marginLeft: "2px",
+                fontSize: "20px",
                 fontFamily: "Roboto , sans-serif",
               }}
             >
-              views
+              {featured.title}
             </Typography>
-          </Typography>
-        </Box>
+            <Typography variant="h6">
+              2300
+              <Typography
+                sx={{
+                  color: "#F35588",
+                  marginLeft: "2px",
+                  fontFamily: "Roboto , sans-serif",
+                }}
+              >
+                views
+              </Typography>
+            </Typography>
+          </Box>
+        )}
       </Box>
     </Card>
   );

@@ -7,16 +7,16 @@ import { Avatar, Button, TextField, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Commentcard from "./../components/singlelot/Commentcard";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useState, useEffect   } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import axios from "axios";
 
 const SingleLot = () => {
-  const [videos , setVideo] = useState({})
-  const location = useLocation()
-  const path = location.pathname.split("/")[2]
+  const [videos, setVideo] = useState({});
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
 
-  console.log(path)
+  console.log(path);
   useEffect(() => {
     const getPost = async () => {
       const res = await axios.get("/videos/" + path);
@@ -28,8 +28,8 @@ const SingleLot = () => {
   return (
     <Box>
       <Mininav />
-      <SingleLotCardFeature videos = {videos}  />
-      
+      <SingleLotCardFeature videos={videos} />
+
       <Box
         display={"flex"}
         justifyContent={"space-between"}
@@ -66,17 +66,19 @@ const SingleLot = () => {
                 }}
               />
             </Typography>
-            <Typography
-              variant={"p"}
-              sx={{
-                paddingTop: "20px",
-                fontSize: "20px",
-                fontFamily: "Roboto, sans-serif",
-                lineHeight: "32px",
-              }}
-            >
-             {videos.desc}
-            </Typography>
+            {videos && (
+              <Typography
+                variant={"p"}
+                sx={{
+                  paddingTop: "20px",
+                  fontSize: "20px",
+                  fontFamily: "Roboto, sans-serif",
+                  lineHeight: "32px",
+                }}
+              >
+                {videos.desc}
+              </Typography>
+            )}
           </Box>
           <Box
             sx={{
@@ -111,7 +113,7 @@ const SingleLot = () => {
                   marginTop: "10px",
                   height: "55px",
                   width: "20%",
-                  fontSize:"15px"
+                  fontSize: "15px",
                 }}
               >
                 Comment

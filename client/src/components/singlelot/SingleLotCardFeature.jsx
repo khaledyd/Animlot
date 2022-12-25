@@ -29,15 +29,17 @@ const SingleLot = ({ videos }) => {
         />
         <Box display={"flex"} flexDirection={"column"} alignItems={"baseline"}>
           <Box display={"flex"}>
-            <Typography
-              sx={{
-                fontSize: "20px",
-                fontWeight: "md",
-                fontFamily: "Roboto , sans-serif",
-              }}
-            >
-              {videos.fullname}
-            </Typography>
+            {videos && (
+              <Typography
+                sx={{
+                  fontSize: "20px",
+                  fontWeight: "md",
+                  fontFamily: "Roboto , sans-serif",
+                }}
+              >
+                {videos.fullname}
+              </Typography>
+            )}
           </Box>
 
           <Typography

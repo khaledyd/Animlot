@@ -14,10 +14,11 @@ import { useState } from "react";
 
 import SearchIcon from "@mui/icons-material/Search";
 import { Link, useNavigate } from "react-router-dom";
+import animlotlogo from "../asets/animlot-logo.png";
 
 const Nav = () => {
-  const [search , setSearch] = useState("")
-  const navigate = useNavigate()
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
   return (
     <Box
       display={"flex"}
@@ -33,7 +34,6 @@ const Nav = () => {
           md: "center",
         },
         width: { xs: "100%", sm: "100%", md: "100%" },
-
       }}
     >
       <Box
@@ -48,7 +48,7 @@ const Nav = () => {
       >
         <CardMedia
           component="img"
-          image="./images/animlot-logo.png"
+          image={animlotlogo}
           alt="green iguana"
           sx={{
             width: "130px",
@@ -104,7 +104,7 @@ const Nav = () => {
             outline: "none",
             fontSize: "28px",
           }}
-          onChange={(e)=> setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
         />
         <SearchIcon
           sx={{
@@ -113,7 +113,6 @@ const Nav = () => {
             color: "#AA3B76",
             zIndex: "1",
           }}
-
         />
       </Box>
 
@@ -136,7 +135,7 @@ const Nav = () => {
           }}
         >
           <Typography variant="h6" marginRight={"10px"} alignSelf={"baseline"}>
-            <PersonIcon sx={{ fontSize:"40px"}} />
+            <PersonIcon sx={{ fontSize: "40px" }} />
           </Typography>
         </Box>
       </Box>

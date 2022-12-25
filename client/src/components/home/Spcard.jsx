@@ -37,15 +37,17 @@ export default function DribbbleShot({ sponsorredVideos }) {
         },
       }}
     >
-      <Box sx={{ position: "relative" }}>
-        <Link to={`/videoid/${sponsorredVideos._id}`}>
-          <CardMedia
-            component="video"
-            controls
-            src={sponsorredVideos.videoUrl}
-          />
-        </Link>
-      </Box>
+      {sponsorredVideos && (
+        <Box sx={{ position: "relative" }}>
+          <Link to={`/videoid/${sponsorredVideos._id}`}>
+            <CardMedia
+              component="video"
+              controls
+              src={sponsorredVideos.videoUrl}
+            />
+          </Link>
+        </Box>
+      )}
 
       <Box
         sx={{
@@ -63,52 +65,58 @@ export default function DribbbleShot({ sponsorredVideos }) {
           size="lg"
           sx={{ "--Avatar-size": "3.5rem" }}
         />
-        <Box display={"flex"} flexDirection={"column"} alignItems={"baseline"}>
-          <Box display={"flex"}>
-            <Typography
-              sx={{
-                fontSize: "sm",
-                fontWeight: "md",
-                fontFamily: "Roboto , sans-serif",
-              }}
-            >
-              {sponsorredVideos.fullname}
-            </Typography>
-            <Box
-              sx={{
-                backgroundColor: "#F35588",
-                padding: "3px 10px",
-                fontSize: "12px",
-                marginLeft: "10px",
-                color: "#fff",
-              }}
-            >
-              12:10
-            </Box>
-          </Box>
-
-          <Typography
-            variant="h6"
-            sx={{
-              fontSize: "20px",
-              fontFamily: "Roboto , sans-serif",
-            }}
+        {sponsorredVideos && (
+          <Box
+            display={"flex"}
+            flexDirection={"column"}
+            alignItems={"baseline"}
           >
-            {sponsorredVideos.title}
-          </Typography>
-          <Typography variant="h6">
-            2300
+            <Box display={"flex"}>
+              <Typography
+                sx={{
+                  fontSize: "sm",
+                  fontWeight: "md",
+                  fontFamily: "Roboto , sans-serif",
+                }}
+              >
+                {sponsorredVideos.fullname}
+              </Typography>
+              <Box
+                sx={{
+                  backgroundColor: "#F35588",
+                  padding: "3px 10px",
+                  fontSize: "12px",
+                  marginLeft: "10px",
+                  color: "#fff",
+                }}
+              >
+                12:10
+              </Box>
+            </Box>
+
             <Typography
+              variant="h6"
               sx={{
-                color: "#F35588",
-                marginLeft: "2px",
+                fontSize: "20px",
                 fontFamily: "Roboto , sans-serif",
               }}
             >
-              views
+              {sponsorredVideos.title}
             </Typography>
-          </Typography>
-        </Box>
+            <Typography variant="h6">
+              2300
+              <Typography
+                sx={{
+                  color: "#F35588",
+                  marginLeft: "2px",
+                  fontFamily: "Roboto , sans-serif",
+                }}
+              >
+                views
+              </Typography>
+            </Typography>
+          </Box>
+        )}
       </Box>
     </Card>
   );

@@ -60,7 +60,7 @@ const VideoSchema = new mongoose.Schema(
       type: Boolean,
       default: "false",
     },
-    eOfQuestion: {
+    typeOfQuestion: {
       type: [String],
       default: [],
       required: true,

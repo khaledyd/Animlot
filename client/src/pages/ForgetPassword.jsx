@@ -1,14 +1,14 @@
 import React from "react";
 import { borderColor, Box } from "@mui/system";
 import { Button, TextField, Typography } from "@mui/material";
-import Nav from "../components/home/Nav";
-import {axiosInstance} from "../config"
+
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { loginFailure, loginStart, loginSuccess } from "../Redux/userSlice";
 import { useDispatch } from "react-redux";
-
+import Mininav from "../components/Mininav";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,30 +17,26 @@ const Login = () => {
   const [error, setError] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- 
+
   const [code, setCode] = useState();
   const [change, setChange] = useState(false);
   const [newone, setOneone] = useState(false);
   const [user, setUser] = useState({});
-  
 
   const handlesubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axiosInstance.post("/auth/SendOtb", { email });
+      const res = await axios.post("/auth/SendOtb", { email });
       setChange(true);
     } catch (err) {
-  
       dispatch(loginFailure(err));
- 
     }
   };
 
   const handleupdate = async (e) => {
     e.preventDefault();
     try {
-      const res = await axiosInstance.post("/auth/verify", {
-        
+      const res = await axios.post("/auth/verify", {
         email,
 
         code,
@@ -49,10 +45,7 @@ const Login = () => {
       dispatch(loginSuccess(res.data));
       setOneone(true);
       navigate("/Updatepassword");
-
-
     } catch (err) {
-
       setError(true);
     }
   };
@@ -64,22 +57,18 @@ const Login = () => {
     e.preventDefault();
     if (password) {
       try {
-        const res = await axiosInstance.put(`/users/${useriD}`, {
+        const res = await axios.put(`/users/${useriD}`, {
           withCredentials: true,
           Id: useriD,
           password: password,
         });
-  
-      } catch (err) {
-   
-      }
+      } catch (err) {}
     } else {
- 
     }
   };
   return (
     <Box>
-      <Nav />
+      <Mininav />
 
       <Box
         sx={{
@@ -103,7 +92,7 @@ const Login = () => {
             <Typography
               variant="h4"
               sx={{
-                color: "#7743DB",
+                color: "#F35588",
                 marginBottom: "30px",
               }}
             >
@@ -171,7 +160,7 @@ const Login = () => {
                     marginTop: "10px",
 
                     marginLeft: "-70px",
-                    backgroundColor: "#7743DB",
+                    backgroundColor: "#F35588",
                     color: "#fff",
                   }}
                 >
@@ -197,7 +186,7 @@ const Login = () => {
             <Typography
               variant="h4"
               sx={{
-                color: "#7743DB",
+                color: "#F35588",
                 marginBottom: "30px",
               }}
             >
@@ -238,7 +227,7 @@ const Login = () => {
                     marginTop: "10px",
 
                     marginLeft: "-70px",
-                    backgroundColor: "#7743DB",
+                    backgroundColor: "#F35588",
                     color: "#fff",
                   }}
                 >

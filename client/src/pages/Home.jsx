@@ -9,6 +9,7 @@ import Footer from "../components/home/Footer";
 import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
 import { async } from "@firebase/util";
+import Footers from "../components/home/Footers";
 import axios from "axios";
 import { database } from "faker";
 const Home = () => {
@@ -21,15 +22,14 @@ const Home = () => {
       const res = await axios.get("/videos");
       const data = await res.data;
       let filtred = [];
-      
+
       for (let i = 0; i < data.length; i++) {
         if (data[i].isSponsorred == true) {
-         
           filtred.push(data[i]);
-        } 
+        }
       }
-      let filtreditem = filtred[Math.floor(Math.random() * filtred.length)]
-      const newdata = [filtreditem]
+      let filtreditem = filtred[Math.floor(Math.random() * filtred.length)];
+      const newdata = [filtreditem];
       setSponsorredVideos(newdata);
     };
 
@@ -42,16 +42,14 @@ const Home = () => {
     const fetchdata = async () => {
       const res = await axios.get("/videos");
       const data = await res.data;
-      let filtreds= [];
+      let filtreds = [];
       setSponsorredVideo(filtreds);
-      
+
       for (let i = 0; i < data.length; i++) {
         if (data[i].isSponsorred == true) {
-         
           filtreds.push(data[i]);
-        } 
+        }
       }
-  
     };
 
     fetchdata();
@@ -63,15 +61,15 @@ const Home = () => {
       const res = await axios.get("/videos");
       const data = await res.data;
       let filtredfs = [];
-      
+
       for (let i = 0; i < data.length; i++) {
         if (data[i].isSponsorred == false) {
-         
           filtredfs.push(data[i]);
-        } 
+        }
       }
-      let filtreditems = filtredfs[Math.floor(Math.random() * filtredfs.length)]
-      const newdatas = [filtreditems]
+      let filtreditems =
+        filtredfs[Math.floor(Math.random() * filtredfs.length)];
+      const newdatas = [filtreditems];
       setFeatured(newdatas);
     };
 
@@ -82,35 +80,35 @@ const Home = () => {
     const fetchdata = async () => {
       const res = await axios.get("/videos");
       const data = await res.data;
-      let filtredf= [];
+      let filtredf = [];
       setFeatureds(filtredf);
-      
+
       for (let i = 0; i < data.length; i++) {
         if (data[i].isSponsorred == false) {
-         
           filtredf.push(data[i]);
-        } 
+        }
       }
-  
     };
 
     fetchdata();
   }, []);
-  console.log(sponsorredVideos)
+  console.log(sponsorredVideos);
   return (
-    <Box
-      sx={{
-        padding: "0px",
-        MARGIN: "0px",
-      }}
-    >
+    <Box sx={{
+      width: "100%",
+   
+    }}>
       <Nav />
       <Hero />
-      <Sponsored sponsorredVideos={sponsorredVideos} sponsorredVideo={sponsorredVideo} />
-      <Featured featured={featured}  featureds={featureds}/>
-   {   /*<Question />
+      <Sponsored
+        sponsorredVideos={sponsorredVideos}
+        sponsorredVideo={sponsorredVideo}
+      />
+      <Featured featured={featured} featureds={featureds} />
+      {/*<Question />
       <BganimlotCard />*/}
-      <Footer />
+      {/*<Footer />*/}
+      <Footers />
     </Box>
   );
 };

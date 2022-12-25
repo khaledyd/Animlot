@@ -16,7 +16,7 @@ const Footer = () => {
         display: "flex",
         flexDirection: "column",
         height: "max-height",
-        width:"100%"
+        width: "100%",
       }}
     >
       <Box
@@ -25,10 +25,10 @@ const Footer = () => {
           display: "flex",
           justifyContent: "space-between",
           flexDirection: { xs: "column", sm: "column", md: "row" },
-          backgroundColor:"#F35588",
+          backgroundColor: "#F35588",
           height: "300px",
           color: "#Fff",
-        width: "100%"
+          width: "100%",
         }}
       >
         <Box pt={2} display={"flex"} sx={{ flexDirection: "column" }}>

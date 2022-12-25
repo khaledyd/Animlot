@@ -15,12 +15,13 @@ const Sponsored = ({ sponsorredVideos, sponsorredVideo }) => {
       flexDirection={"column"}
       sx={{
         marginTop: "30px",
+
       }}
     >
       <Box display={"flex"} justifyContent={"space-between"}>
         <Box
           sx={{
-            marginRight: "20px",
+
             width: {
               md: "100%",
               sm: "100%",
@@ -50,7 +51,6 @@ const Sponsored = ({ sponsorredVideos, sponsorredVideo }) => {
         </Box>
         <Box
           sx={{
-            paddingLeft: "10px",
           }}
         >
           <Typography
@@ -79,7 +79,6 @@ const Sponsored = ({ sponsorredVideos, sponsorredVideo }) => {
         display={"flex"}
         sx={{
           marginTop: "30px",
-          marginLeft: "20px",
           marginBottom: "30px",
           flexWrap: "wrap",
           width: "100%",

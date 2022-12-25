@@ -20,6 +20,7 @@ const Nav = () => {
           sm: "space-between",
           md: "space-between",
           marginTop: "10px",
+
         },
         alignItems: {
           lg: "center",

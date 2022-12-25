@@ -115,9 +115,11 @@ export const getByTag = async (req, res, next) => {
 
 export const search = async (req, res, next) => {
   const query = req.query.q;
+  const type = req.body.type;
   try {
     const videos = await Video.find({
       title: { $regex: query, $options: "i" },
+      typeOfQuestion: type,
     }).limit(40);
     res.status(200).json(videos);
   } catch (err) {
@@ -194,7 +196,7 @@ export const fechusersvideos = async (req, res) => {
   const userId = req.params.id;
   try {
     if (userId) {
-      const videos = await Video.find({ userId});
+      const videos = await Video.find({ userId });
       res.status(200).json(videos);
     } else {
       res.status(400).json("wrong user id");
@@ -203,4 +205,3 @@ export const fechusersvideos = async (req, res) => {
     next();
   }
 };
-

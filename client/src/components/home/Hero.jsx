@@ -17,6 +17,7 @@ const Hero = () => {
   const navigate = useNavigate();
 
   const [q, setQ] = useState("");
+  const [type, setType] = useState("");
   const handleclick = (e) => {
     e.preventDefault();
     navigate(`/search?q=${q}`);
@@ -89,6 +90,7 @@ const Hero = () => {
               sx={{
                 color: "#fff",
               }}
+              onChange={(e) => setType(e.target.value)}
             >
               <MenuItem value={"what is"}>what is</MenuItem>
               <MenuItem value={"how it works"}>how it works</MenuItem>
@@ -103,7 +105,7 @@ const Hero = () => {
             outline: "none",
             fontSize: "28px",
           }}
-          onChange={(e)=>setQ(e.target.value)}
+          onChange={(e) => setQ(e.target.value)}
         />
         <SearchIcon
           sx={{
@@ -112,7 +114,7 @@ const Hero = () => {
             color: "#AA3B76",
             zIndex: "1",
           }}
-          onClick={()=>navigate(`/search?q=${q}`)}
+          onClick={() => navigate(`/search?q=${(q, type)}`)}
         />
       </Box>
       <Typography

@@ -114,7 +114,7 @@ export default function DribbbleShot({ videos }) {
                       color: "#fff",
                     }}
                   >
-                    12:10
+                    {videos.typeOfQuestion}
                   </Box>
                 </Box>
 

@@ -90,7 +90,7 @@ export default function DribbbleShot({ sponsorredVideos }) {
                   color: "#fff",
                 }}
               >
-                12:10
+{sponsorredVideos.typeOfQuestion}
               </Box>
             </Box>
 

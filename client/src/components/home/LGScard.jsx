@@ -13,8 +13,24 @@ import Visibility from "@mui/icons-material/Visibility";
 import CreateNewFolder from "@mui/icons-material/CreateNewFolder";
 import { useState, useEffect } from "react";
 import { CardMedia } from "@mui/material";
+import { useRef } from "react";
+import moment from "moment";
+
+
 
 export default function DribbbleShot({ sponsorredVideo }) {
+  const videoEl = useRef(null);
+  const [datav, setdata] = useState("");
+  const handleLoadedMetadata = () => {
+    const video = videoEl.current;
+    if (!video) return;
+    console.log(`The video is ${video.duration} seconds long.`);
+    setdata(video.duration);
+  };
+
+
+
+  console.log(datav);
   return (
     <Card
       sx={{
@@ -36,6 +52,8 @@ export default function DribbbleShot({ sponsorredVideo }) {
           <CardMedia
             component="video"
             controls
+            ref={videoEl}
+            onLoadedMetadata={handleLoadedMetadata}
             src={sponsorredVideo.videoUrl}
           />
         </Link>
@@ -77,7 +95,7 @@ export default function DribbbleShot({ sponsorredVideo }) {
                 color: "#fff",
               }}
             >
-              12:10
+              <span>{sponsorredVideo.typeOfQuestion}</span>
             </Box>
           </Box>
 

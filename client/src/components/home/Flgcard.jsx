@@ -79,7 +79,7 @@ export default function DribbbleShot({ featured }) {
                   color: "#fff",
                 }}
               >
-                12:10
+   {featured.typeOfQuestion}
               </Box>
             </Box>
 

@@ -44,7 +44,7 @@ const Login = () => {
       setUser(res.data);
       dispatch(loginSuccess(res.data));
       setOneone(true);
-      navigate("/Updatepassword");
+      navigate("/");
     } catch (err) {
       setError(true);
     }

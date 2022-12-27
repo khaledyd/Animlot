@@ -167,7 +167,7 @@ const SingleLot = () => {
             <Box width={"100%"} alignItems={"center"}>
               <TextField
                 sx={{
-                  width: "80%",
+                  width: "100%",
                   marginTop: "10px",
                 }}
                 name="describtion"
@@ -180,7 +180,7 @@ const SingleLot = () => {
                   color: "#FFF",
                   marginTop: "10px",
                   height: "55px",
-                  width: "20%",
+                  width: "max-content",
                   fontSize: "15px",
                 }}
                 onClick={addcoment}

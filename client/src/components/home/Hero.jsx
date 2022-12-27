@@ -114,7 +114,7 @@ const Hero = () => {
             color: "#AA3B76",
             zIndex: "1",
           }}
-          onClick={() => navigate(`/search?q=${(q, type)}`)}
+          onClick={() => navigate(`/search?q=${q}&t=${type} `)}
         />
       </Box>
       <Typography

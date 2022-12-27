@@ -115,13 +115,21 @@ export const getByTag = async (req, res, next) => {
 
 export const search = async (req, res, next) => {
   const query = req.query.q;
-  const type = req.body.type;
+  const type = req.query.t;
   try {
     const videos = await Video.find({
       title: { $regex: query, $options: "i" },
-      typeOfQuestion: type,
+      //typeOfQuestion: typeOfQuestion,
     }).limit(40);
-    res.status(200).json(videos);
+
+    const samples = await Video.find({
+      $and: [
+        { title: { $regex: query, $options: "i" } },
+        { typeOfQuestion: { $regex: type } },
+      ],
+    });
+    console.log(samples);
+    res.status(200).json(samples);
   } catch (err) {
     next(err);
   }

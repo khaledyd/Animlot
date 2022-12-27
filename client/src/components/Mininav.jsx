@@ -17,7 +17,8 @@ import { Link, useNavigate } from "react-router-dom";
 import animlotlogo from "../asets/animlot-logo.png";
 
 const Nav = () => {
-  const [search, setSearch] = useState("");
+  const [q, setQ] = useState("");
+  const [type, setType] = useState("");
   const navigate = useNavigate();
   return (
     <Box
@@ -90,6 +91,7 @@ const Nav = () => {
               sx={{
                 color: "#fff",
               }}
+              onChange={(e) => setType(e.target.value)}
             >
               <MenuItem value={"what is"}>what is</MenuItem>
               <MenuItem value={"how it works"}>how it works</MenuItem>
@@ -104,7 +106,7 @@ const Nav = () => {
             outline: "none",
             fontSize: "28px",
           }}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setQ(e.target.value)}
         />
         <SearchIcon
           sx={{
@@ -113,6 +115,7 @@ const Nav = () => {
             color: "#AA3B76",
             zIndex: "1",
           }}
+          onClick={() => navigate(`/search?q=${q}&t=${type} `)}
         />
       </Box>
 

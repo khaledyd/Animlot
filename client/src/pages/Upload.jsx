@@ -180,7 +180,7 @@ const Upload = () => {
                 name="typeOfQuestion"
                 onChange={handleChange}
               >
-                <MenuItem value={"what"}>What </MenuItem>
+                <MenuItem value={"what is"}>What </MenuItem>
                 <MenuItem value={"how it works"}>How it works</MenuItem>
               </Select>
               <TextField

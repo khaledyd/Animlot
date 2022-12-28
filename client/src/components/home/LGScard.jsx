@@ -16,8 +16,6 @@ import { CardMedia } from "@mui/material";
 import { useRef } from "react";
 import moment from "moment";
 
-
-
 export default function DribbbleShot({ sponsorredVideo }) {
   const videoEl = useRef(null);
   const [datav, setdata] = useState("");
@@ -27,8 +25,6 @@ export default function DribbbleShot({ sponsorredVideo }) {
     console.log(`The video is ${video.duration} seconds long.`);
     setdata(video.duration);
   };
-
-
 
   console.log(datav);
   return (
@@ -109,7 +105,7 @@ export default function DribbbleShot({ sponsorredVideo }) {
             {sponsorredVideo.title}
           </Typography>
           <Typography variant="h6">
-            2300
+            {sponsorredVideo.views}
             <Typography
               sx={{
                 color: "#F35588",

@@ -90,7 +90,7 @@ export default function DribbbleShot({ sponsorredVideos }) {
                   color: "#fff",
                 }}
               >
-{sponsorredVideos.typeOfQuestion}
+                {sponsorredVideos.typeOfQuestion}
               </Box>
             </Box>
 
@@ -104,7 +104,7 @@ export default function DribbbleShot({ sponsorredVideos }) {
               {sponsorredVideos.title}
             </Typography>
             <Typography variant="h6">
-              2300
+       100
               <Typography
                 sx={{
                   color: "#F35588",

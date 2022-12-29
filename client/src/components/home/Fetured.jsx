@@ -75,10 +75,10 @@ const Sponsored = ({ featureds, featured }) => {
         display={"flex"}
         sx={{
           marginTop: "30px",
-          marginLeft: "20px",
           marginBottom: "30px",
           flexWrap: "wrap",
           width: "100%",
+     
         }}
       >
         {featureds.map((fs) => {

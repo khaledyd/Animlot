@@ -94,21 +94,28 @@ const Home = () => {
   }, []);
   console.log(sponsorredVideos);
   return (
-    <Box sx={{
-      width: "100%",
-   
-    }}>
-      <Nav />
-      <Hero />
-      <Sponsored
+    <Box
+      sx={{
+        width: "100%",
+      }}
+    >
+      {/* 
+         <Nav />
+
+           <Hero />
+            <Sponsored
         sponsorredVideos={sponsorredVideos}
         sponsorredVideo={sponsorredVideo}
-      />
-      <Featured featured={featured} featureds={featureds} />
+      /><Featured featured={featured} featureds={featureds} />
+      
+       <Footers />
+           
+      
+
+
       {/*<Question />
       <BganimlotCard />*/}
       {/*<Footer />*/}
-      <Footers />
     </Box>
   );
 };

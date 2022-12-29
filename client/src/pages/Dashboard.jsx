@@ -9,15 +9,16 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { async } from "@firebase/util";
 import { dislike, fetchSuccess, like } from "../Redux/videoSlice";
+import { Button, Typography } from "@mui/material";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   console.log(currentUser._id);
   const { currentVideo } = useSelector((state) => state.video);
   let userid = currentUser._id;
-  console.log(currentUser)
+  console.log(currentUser);
   const [userVideos, setUserVideos] = useState([]);
-console.log(userVideos)
+  console.log(userVideos);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,6 +41,12 @@ console.log(userVideos)
       <Box
         sx={{
           width: "20%",
+          display: {
+            xs: "none",
+            sm: "none",
+            lg: "block",
+            md: "block",
+          },
         }}
       >
         <Sidebar />
@@ -51,13 +58,23 @@ console.log(userVideos)
           flexDirection: "column",
         }}
       >
-        <Box>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: {
+              xs: "space-between",
+              sm: "baseline",
+            },
+          }}
+        >
           {" "}
           <Topnav />
         </Box>
+     
+
         <Box>
           {" "}
-          <Lots userVideos = {userVideos} />
+          <Lots userVideos={userVideos} />
         </Box>
       </Box>
     </Box>

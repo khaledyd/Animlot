@@ -4,7 +4,10 @@ import PersonIcon from "@mui/icons-material/Person";
 
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Redux/userSlice";
+import { useNavigate } from "react-router-dom";
+
 const Sidebar = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const hanldelogout = () => {
     dispatch(logout());
@@ -49,44 +52,24 @@ const Sidebar = () => {
       >
         <Typography
           sx={{
-            paddingTop: "10px",
+            paddingTop: "22px",
+            marginBottom:"20px"
           }}
+          onClick={()=>navigate("/settings")}
         >
           Account settings{" "}
         </Typography>
-        <Typography
-          sx={{
-            paddingTop: "10px",
-          }}
-        >
-          {" "}
-          Resources
-        </Typography>
-        <Typography
-          sx={{
-            paddingTop: "10px",
-          }}
-        >
-          Paymenst
-        </Typography>
-        <Typography
-          sx={{
-            paddingTop: "10px",
-          }}
-        >
-          Lot seetings{" "}
-        </Typography>
-        <Typography
-          sx={{
-            paddingTop: "10px",
-          }}
-        >
-          Contact us{" "}
-        </Typography>
+    
+   
+    
+   
+      
+    
         <Button
           sx={{
             backgroundColor: "#fff",
             width: "max-content",
+  
           }}
           onClick={hanldelogout}
         >

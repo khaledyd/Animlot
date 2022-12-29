@@ -136,6 +136,7 @@ const Footer = () => {
           height: "50px",
           backgroundColor: "#fff",
           display: "flex",
+          marginTop:"30px",
           alignItems: "center",
           justifyContent: "center",
           flexDirection: {

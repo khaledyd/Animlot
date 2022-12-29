@@ -73,6 +73,7 @@ const Login = () => {
             width: "50%",
             marginLeft: { lg: "20%", md: "20", sm: "15%", xs: "15%" },
             backgroundColor: "#FCFCFC",
+
             padding: "100px 60px",
             boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
           }}

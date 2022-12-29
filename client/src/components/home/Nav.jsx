@@ -4,11 +4,11 @@ import { Button, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import CardMedia from "@mui/material/CardMedia";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Link from "@mui/material/Link";
 
 const Nav = () => {
-  const navigare = useNavigate();
+  const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
 
   return (
@@ -20,13 +20,13 @@ const Nav = () => {
           sm: "space-between",
           md: "space-between",
           marginTop: "10px",
-
         },
         alignItems: {
           lg: "center",
           md: "center",
         },
         width: "100%",
+   
       }}
     >
       <Box
@@ -42,7 +42,9 @@ const Nav = () => {
           alt="green iguana"
           sx={{
             width: "130px",
+            cursor: "pointer",
           }}
+          onClick={()=>navigate("/")}
         />
       </Box>
 
@@ -62,12 +64,51 @@ const Nav = () => {
           color: "#A93B74",
         }}
       >
-        <Typography variant="h6" sx={{}}>
+        <Typography
+          variant="h6"
+          sx={{
+            cursor: "pointer",
+            "&:hover": {
+              color: "#fff",
+              backgroundColor: "#A93B74",
+              padding: "2px 10px",
+              transitionDuration: "0s",
+            },
+          }}
+          onClick={() => navigate("/About")}
+        >
           About
         </Typography>
-        <Typography variant="h6">Products</Typography>
-        <Typography variant="h6">Wtach</Typography>
-        <Typography variant="h6">Features</Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            cursor: "pointer",
+            "&:hover": {
+              color: "#fff",
+              backgroundColor: "#A93B74",
+              padding: "2px 10px",
+              transitionDuration: "0s",
+            },
+          }}
+          onClick={() => navigate("/Products")}
+        >
+          Products
+        </Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            cursor: "pointer",
+            "&:hover": {
+              color: "#fff",
+              backgroundColor: "#A93B74",
+              padding: "2px 10px",
+              transitionDuration: "0s",
+            },
+          }}
+          onClick={() => navigate("/Watch")}
+        >
+          Wtach
+        </Typography>
 
         <Box
           display={"flex"}
@@ -81,11 +122,21 @@ const Nav = () => {
           }}
         >
           <Typography variant="h6" marginRight={"10px"} alignSelf={"baseline"}>
-            <PersonIcon sx={{}} />
             {currentUser ? (
-              <Link href={"/dashboard"} underline="none" sx={{
-                      color: "#AA3B75",
-              }}> 
+              <Link
+                href={"/dashboard"}
+                underline="none"
+                sx={{
+                  color: "#AA3B75",
+                  cursor: "pointer",
+                  "&:hover": {
+                    color: "#fff",
+                    backgroundColor: "#A93B74",
+                    padding: "2px 10px",
+                    transitionDuration: "0s",
+                  },
+                }}
+              >
                 {currentUser.fullname}
               </Link>
             ) : (
@@ -100,6 +151,7 @@ const Nav = () => {
                 borderColor: "white",
                 borderRadius: "10px",
               }}
+              onClick={() => navigate("/upload")}
             >
               Upload
             </Button>

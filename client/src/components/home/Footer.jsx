@@ -15,7 +15,7 @@ const Footer = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "max-height",
+        height: "max-content",
         width: "100%",
       }}
     >
@@ -26,9 +26,10 @@ const Footer = () => {
           justifyContent: "space-between",
           flexDirection: { xs: "column", sm: "column", md: "row" },
           backgroundColor: "#F35588",
-          height: "300px",
+          height: "max-content",
           color: "#Fff",
           width: "100%",
+          marginBottom: "40px",
         }}
       >
         <Box pt={2} display={"flex"} sx={{ flexDirection: "column" }}>
@@ -56,10 +57,9 @@ const Footer = () => {
         sx={{
           width: "100%",
           backgroundColor: "#fff",
-          height: "100px",
+          height: "max-content",
           flexDirection: { xs: "column", sm: "column", md: "row" },
           fontFamily: "Roboto, sans-serif",
-          paddingTop: "20px",
         }}
       >
         {" "}
@@ -71,7 +71,14 @@ const Footer = () => {
             width: "130px",
           }}
         />
-        <Box gap={2} display={"flex"}>
+        <Box
+          gap={2}
+          display={"flex"}
+          sx={{
+            marginTop: "20px",
+            flexDirection: { xs: "row", sm: "row", md: "row" },
+          }}
+        >
           <Typography variant="p">Terms |</Typography>
           <Typography variant="p">Privacy |</Typography>
           <Typography variant="p">Copywriter |</Typography>

@@ -82,6 +82,7 @@ const Sponsored = ({ sponsorredVideos, sponsorredVideo }) => {
           marginBottom: "30px",
           flexWrap: "wrap",
           width: "100%",
+   
         }}
       >
         {sponsorredVideo.map((sp) => {

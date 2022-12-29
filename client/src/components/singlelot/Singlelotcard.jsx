@@ -128,7 +128,7 @@ export default function DribbbleShot({ videos }) {
                   {videos.title}
                 </Typography>
                 <Typography variant="h6">
-                  2300
+                  {videos.views}
                   <Typography
                     sx={{
                       color: "#F35588",

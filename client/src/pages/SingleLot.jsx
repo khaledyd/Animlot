@@ -37,6 +37,7 @@ const SingleLot = () => {
   console.log(commentlists);
   const [username, setusername] = useState("");
   const dispatch = useDispatch();
+  const[views , setViews] = useState();
 
   console.log(likecount.length);
 
@@ -44,6 +45,8 @@ const SingleLot = () => {
     const fetchData = async () => {
       try {
         const videoRes = await axios.get(`/videos/${path}`);
+        const addview = await axios.put(`/videos/view/${path}`);
+        setViews(addview.data.views)
         setVideo(videoRes.data);
         setcommentlists(videoRes.data.comments);
         setLikes(videoRes.data.likes);
@@ -59,6 +62,7 @@ const SingleLot = () => {
     };
     fetchData();
   }, [path]);
+  console.log(views)
 
   const handleLike = async () => {
     await axios.put(`/users/like/${currentVideo._id}`);

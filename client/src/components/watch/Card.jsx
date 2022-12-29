@@ -33,8 +33,6 @@ export default function DribbbleShot({ videos }) {
         bgcolor: "initial",
         boxShadow: "none",
         "--Card-padding": "0px",
-   
-
       }}
     >
       {videos && (
@@ -100,7 +98,8 @@ export default function DribbbleShot({ videos }) {
               {videos.title}
             </Typography>
             <Typography variant="h6">
-              2300
+              {videos.views}
+
               <Typography
                 sx={{
                   color: "#F35588",

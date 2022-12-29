@@ -15,6 +15,8 @@ import SingleLotFeature from "./pages/SingleLotFeature";
 import ForgetPassword from "./pages/ForgetPassword";
 import Updatepassword from "./pages/Updatepassword";
 import Watch from "./pages/Watch";
+import About from "./pages/About";
+import Products from "./pages/Products";
 export default function App() {
   const { currentUser } = useSelector((state) => state.user);
 
@@ -58,6 +60,9 @@ export default function App() {
           <Route path="/ForgetPassword" element={<ForgetPassword />} />
           <Route path="/Updatepassword" element={<Updatepassword />} />
           <Route path="/Watch" element={<Watch />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Products" element={<Products />} />
+          
 
         </Routes>
       </BrowserRouter>

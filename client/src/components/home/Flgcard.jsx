@@ -79,7 +79,7 @@ export default function DribbbleShot({ featured }) {
                   color: "#fff",
                 }}
               >
-   {featured.typeOfQuestion}
+                {featured.typeOfQuestion}
               </Box>
             </Box>
 
@@ -93,7 +93,7 @@ export default function DribbbleShot({ featured }) {
               {featured.title}
             </Typography>
             <Typography variant="h6">
-              2300
+              {featured.views}
               <Typography
                 sx={{
                   color: "#F35588",

@@ -99,19 +99,16 @@ const Home = () => {
         width: "100%",
       }}
     >
-      {/* 
-         <Nav />
+      <Nav />
 
-           <Hero />
-            <Sponsored
+      <Hero />
+      <Sponsored
         sponsorredVideos={sponsorredVideos}
         sponsorredVideo={sponsorredVideo}
-      /><Featured featured={featured} featureds={featureds} />
-      
-       <Footers />
-           
-      
+      />
+      <Featured featured={featured} featureds={featureds} />
 
+      <Footers />
 
       {/*<Question />
       <BganimlotCard />*/}

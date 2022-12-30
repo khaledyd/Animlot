@@ -161,7 +161,7 @@ const About = () => {
             animlot provides searchers two options before the search, and
             searchers only choose the question type (what or how it works) and
             then type the keyword. The results will show animated videos and
-            answer one of the questions.
+            answer one of the questions
           </Typography>
         </Box>
       </Box>

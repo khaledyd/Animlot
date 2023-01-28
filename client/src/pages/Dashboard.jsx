@@ -6,24 +6,25 @@ import Topnav from "../components/dashboard/Topnav";
 import { useState, useEffect } from "react";
 import { loginFailure, loginStart, loginSuccess } from "../Redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+
 import { async } from "@firebase/util";
 import { dislike, fetchSuccess, like } from "../Redux/videoSlice";
 import { Button, Typography } from "@mui/material";
+import {axiosInstance} from "../config"
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  console.log(currentUser._id);
+
   const { currentVideo } = useSelector((state) => state.video);
   let userid = currentUser._id;
-  console.log(currentUser);
+
   const [userVideos, setUserVideos] = useState([]);
-  console.log(userVideos);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const videoRes = await axios.get(`/videos/getusers/${userid}`);
-        console.log(videoRes.data);
+        const videoRes = await axiosInstance.get(`/videos/getusers/${userid}`);
+      
         setUserVideos(videoRes.data);
       } catch (err) {}
     };
@@ -68,7 +69,7 @@ const Dashboard = () => {
           }}
         >
           {" "}
-          <Topnav />
+          <Topnav userVideos ={userVideos} />
         </Box>
      
 

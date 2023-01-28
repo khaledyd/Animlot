@@ -3,13 +3,15 @@ import { borderColor, Box } from "@mui/system";
 import { Button, TextField, Typography } from "@mui/material";
 import Nav from "./../components/home/Nav";
 import { useState } from "react";
-import axios from "axios";
+import { axiosInstance } from "../config";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 import { async } from "@firebase/util";
 import { useDispatch } from "react-redux";
 import { loginFailure, loginStart, loginSuccess } from "../Redux/userSlice";
 import { useNavigate } from "react-router-dom";
+import cookie from "cookie";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,12 +19,11 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const signInWithGoogle = async () => {
     dispatch(loginStart());
     signInWithPopup(auth, provider)
       .then((result) => {
-        axios
+        axiosInstance
           .post("/auth/google", {
             fullname: result.user.displayName,
             email: result.user.email,
@@ -30,7 +31,7 @@ const Login = () => {
           })
           .then((res) => {
             dispatch(loginSuccess(res.data));
-            console.log(res.data);
+        
           });
       })
       .catch((error) => {
@@ -45,14 +46,24 @@ const Login = () => {
       password,
     };
     try {
-      const res = await axios.post("/auth/signin/", data);
-      dispatch(loginSuccess(res.data));
-      navigate("/")
+      const res = await axiosInstance.post(
+        "/auth/signin/",data,
+     
 
+        { withCredentials: true }
+      );
 
-      console.log(res.data);
+      //const cookie = res.headers['set-cookie'][0];
+      //Cookies.set('access_token',token);
+    
+      dispatch(loginSuccess(res.data.data1));
+      navigate("/");
+
+      Cookies.set("access_token", res.data.data1);
+ 
+ 
     } catch (err) {
-      console.log(err);
+
     }
   };
 
@@ -133,17 +144,7 @@ const Login = () => {
               >
                 Log in
               </Button>
-              <Button
-                variant="contained"
-                sx={{
-                  width: "100%",
-                  marginTop: "10px",
-                  backgroundColor: "#F35588",
-                }}
-                onClick={signInWithGoogle}
-              >
-                Log in
-              </Button>
+            
               <Box
                 justifyContent={"flex-start"}
                 sx={{
@@ -153,14 +154,18 @@ const Login = () => {
                 <Typography
                   sx={{
                     color: "#F35588",
+                    cursor:"pointer"
                   }}
+                  onClick = {()=>navigate("/signup")}
                 >
                   Sing up
                 </Typography>
                 <Typography
                   sx={{
                     color: "#F35588",
+                    cursor:"pointer"
                   }}
+                  onClick = {()=>navigate("/ForgetPassword")}
                 >
                   Forget password
                 </Typography>

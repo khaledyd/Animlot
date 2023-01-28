@@ -140,7 +140,22 @@ const Nav = () => {
                 {currentUser.fullname}
               </Link>
             ) : (
-              "log in"
+              <Link
+                href={"/login"}
+                underline="none"
+                sx={{
+                  color: "#AA3B75",
+                  cursor: "pointer",
+                  "&:hover": {
+                    color: "#fff",
+                    backgroundColor: "#A93B74",
+                    padding: "2px 10px",
+                    transitionDuration: "0s",
+                  },
+                }}
+              >
+             log in
+              </Link>
             )}
           </Typography>
           {currentUser ? (

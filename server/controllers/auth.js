@@ -46,13 +46,12 @@ export const signup = async (req, res, next) => {
 };
 
 export const lots = async (req, res, next) => {
-  if (req.params.id === req.user.id){
-    
+  if (req.params.id === req.user.id) {
   }
   try {
     const newLots = new Lots({
       displayname: req.body.displayname,
-      Typeoflot: req.body.Typeoflot
+      Typeoflot: req.body.Typeoflot,
     });
     const user = await newLots.save();
     res.status(200).json(user);
@@ -75,10 +74,10 @@ export const signin = async (req, res, next) => {
 
     res
       .cookie("access_token", token, {
-        httpOnly: true,
+    
       })
       .status(200)
-      .json(others);
+      .json({data1 :others ,  data2: token});
   } catch (err) {
     next(err);
   }
@@ -179,15 +178,12 @@ export const SendOtb = async (req, res) => {
   if (!userExists)
     return res.status(400).send({ message: "email not registered" });
 
-
-
   // Delete previous OTP codes;
   const previousOTPs = await Otbcode.find({ email: email });
 
   for (let previousOTP of previousOTPs) {
     Otbcode.findOneAndDelete(email, function (err, result) {
       if (err) {
-      
       }
     });
   }
@@ -198,9 +194,7 @@ export const SendOtb = async (req, res) => {
       code: generatedOTP,
     });
     sendEmail(generatedOTP, userExists.email);
-  } catch (error) {
-  
-  }
+  } catch (error) {}
   return res.status(200).send({ message: "OTP Sent" });
 };
 
@@ -226,7 +220,6 @@ function sendEmail(code, receiver) {
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
-     
     }
   });
 }

@@ -16,11 +16,11 @@ const SingleLot = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
 
-  console.log(path);
+
   useEffect(() => {
     const getPost = async () => {
       const res = await axios.get("/videos/" + path);
-      console.log(res.data);
+
       setVideo(res.data);
     };
     getPost();

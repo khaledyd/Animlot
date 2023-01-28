@@ -4,7 +4,7 @@ import Mininav from ".././components/Mininav";
 import { Button, TextField, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import axios from "axios";
+import {axiosInstance} from "../config"
 import { useNavigate } from "react-router-dom";
 const Settings = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -18,20 +18,20 @@ const Settings = () => {
     e.preventDefault();
     try {
       if (password) {
-        const res = await axios.put(`/users/${currentUser._id}`, {
+        const res = await axiosInstance.put(`/users/${currentUser._id}`, {
           userId: currentUser._id,
 
           password: password,
         });
         navigate("/dashboard");
       } else if (fullname) {
-        const res = await axios.put(`/users/${currentUser._id}`, {
+        const res = await axiosInstance.put(`/users/${currentUser._id}`, {
           userId: currentUser._id,
           fullname: fullname,
         });
         navigate("/dashboard");
       } else if (email) {
-        const res = await axios.put(`/users/${currentUser._id}`, {
+        const res = await axiosInstance.put(`/users/${currentUser._id}`, {
           email: email,
           userId: currentUser._id,
         });

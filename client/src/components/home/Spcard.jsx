@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 export default function DribbbleShot({ sponsorredVideos }) {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  console.log(sponsorredVideos);
+
   return (
     <Card
       sx={{
@@ -104,7 +104,7 @@ export default function DribbbleShot({ sponsorredVideos }) {
               {sponsorredVideos.title}
             </Typography>
             <Typography variant="h6">
-       100
+              {sponsorredVideos.views}
               <Typography
                 sx={{
                   color: "#F35588",

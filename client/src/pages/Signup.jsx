@@ -3,9 +3,11 @@ import { borderColor, Box } from "@mui/system";
 import { Button, TextField, Typography } from "@mui/material";
 import Nav from "./../components/home/Nav";
 import { useState } from "react";
-import axios from "axios";
+import {axiosInstance} from "../config"
+import {useNavigate} from "react-router-dom"
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [fullname, setfullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,10 +22,10 @@ const Signup = () => {
       fullname,
     };
     try {
-      const res = await axios.post("/auth/signup", data);
-      console.log(res.data);
+      const res = await axiosInstance.post("/auth/signup", data);
+
     } catch (err) {
-      console.log(err);
+    
     }
   };
 
@@ -124,7 +126,7 @@ const Signup = () => {
                 onClick={handlesubmit}
 
               >
-                Log in
+    sign Up
               </Button>
               <Box
                 justifyContent={"flex-start"}
@@ -136,15 +138,17 @@ const Signup = () => {
                   sx={{
                     color: "#F35588",
                   }}
+                  onClick = {()=>navigate("/login")}
                 >
-                  Sing up
+               Log in
                 </Typography>
                 <Typography
                   sx={{
                     color: "#F35588",
                   }}
+                  onClick = {()=>navigate("/ForgetPassword")}
                 >
-                  Forget password
+                  Forget Password
                 </Typography>
               </Box>
             </Box>

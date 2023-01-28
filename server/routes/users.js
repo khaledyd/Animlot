@@ -17,7 +17,7 @@ const router = express.Router();
 router.put("/:id", update);
 
 //delete user
-router.delete("/:id", verifyToken, deleteUser);
+router.delete("/:id",  deleteUser);
 
 //get a user
 router.get("/find/:id", getUser);
@@ -26,13 +26,13 @@ router.get("/find/:id", getUser);
 router.put("/sub/:id", verifyToken, subscribe);
 
 //unsubscribe a user
-router.put("/unsub/:id", verifyToken, unsubscribe);
+router.put("/unsub/:id", unsubscribe);
 
 //like a video
-router.put("/like/:videoId", verifyToken, like);
+router.put("/like/:videoId", like);
 
 //dislike a video
-router.put("/dislike/:videoId", verifyToken, dislike);
+router.put("/dislike/:videoId", dislike);
 
 router.get("/:id", getsubscribers);
 

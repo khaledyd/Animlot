@@ -22,11 +22,11 @@ export default function DribbbleShot({ sponsorredVideo }) {
   const handleLoadedMetadata = () => {
     const video = videoEl.current;
     if (!video) return;
-    console.log(`The video is ${video.duration} seconds long.`);
+
     setdata(video.duration);
   };
 
-  console.log(datav);
+
   return (
     <Card
       sx={{

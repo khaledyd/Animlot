@@ -55,10 +55,10 @@ const Products = () => {
             src="./images/animlot-logo.png"
             style={{
               marginLeft: "20px",
-              width: "200px",
-              height: "70px",
+              width: "120px",
+              height: "50px",
             }}
-            onClick={() => naviage("/home")}
+            onClick={() => naviage("/")}
           />
         </Box>
         <Box
@@ -81,6 +81,7 @@ const Products = () => {
               justifyContent: "flex-end",
               color: "#F35588",
             }}
+            onClick={() => naviage("/dashboard")}
           />
         </Box>
       </Box>

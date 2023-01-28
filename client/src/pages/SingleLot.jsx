@@ -9,51 +9,50 @@ import Commentcard from "./../components/singlelot/Commentcard";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { dislike, fetchSuccess, like } from "../Redux/videoSlice";
 import { subscription } from ".././Redux/userSlice";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+import { axiosInstance } from "../config";
 
 const SingleLot = () => {
   const [videos, setVideo] = useState({});
-  console.log(videos);
+
   const [subs, setsubs] = useState({});
   const [likecount, setLikes] = useState([]);
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const { currentUser } = useSelector((state) => state.user);
   const { currentVideo } = useSelector((state) => state.video);
-  let data = currentUser.fullname;
+
   const [comments, setcomments] = useState([
     {
       describtion: "",
       objectId: "_id",
-      username: data,
     },
   ]);
   const [commentlists, setcommentlists] = useState([]);
-  console.log(commentlists);
+ 
   const [username, setusername] = useState("");
   const dispatch = useDispatch();
-  const[views , setViews] = useState();
+  const [views, setViews] = useState();
 
-  console.log(likecount.length);
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const videoRes = await axios.get(`/videos/${path}`);
-        const addview = await axios.put(`/videos/view/${path}`);
-        setViews(addview.data.views)
+        const videoRes = await axiosInstance.get(`/videos/${path}`);
+        const addview = await axiosInstance.put(`/videos/view/${path}`);
+        setViews(addview.data.views);
         setVideo(videoRes.data);
         setcommentlists(videoRes.data.comments);
         setLikes(videoRes.data.likes);
-        const channelRes = await axios.get(
+        const channelRes = await axiosInstance.get(
           `/users/find/${videoRes.data.userId}`
         );
-        console.log(channelRes);
+
 
         setsubs(channelRes.data);
 
@@ -62,31 +61,46 @@ const SingleLot = () => {
     };
     fetchData();
   }, [path]);
-  console.log(views)
+
 
   const handleLike = async () => {
-    await axios.put(`/users/like/${currentVideo._id}`);
-    dispatch(like(currentUser._id));
+    if (currentUser) {
+      await axiosInstance.put(`/users/like/${currentVideo._id}`);
+      dispatch(like(currentUser._id));
+    }
   };
   const handleDislike = async () => {
-    await axios.put(`/users/dislike/${currentVideo._id}`);
-    dispatch(dislike(currentUser._id));
+    if (currentUser) {
+      await axiosInstance.put(`/users/dislike/${currentVideo._id}`);
+      dispatch(dislike(currentUser._id));
+    }
   };
 
   const handleSub = async () => {
-    currentUser.subscribedUsers.includes(subs._id)
-      ? await axios.put(`/users/unsub/${subs._id}`)
-      : await axios.put(`/users/sub/${subs._id}`);
-    dispatch(subscription(subs._id));
+    if (currentUser) {
+      currentUser.subscribedUsers.includes(subs._id)
+        ? await axiosInstance.put(`/users/unsub/${subs._id}`,currentUser._id, {
+            withCredentials: true,
+            
+         
+          })
+        : await axiosInstance.put(`/users/sub/${subs._id}`, {
+            withCredentials: true,
+          });
+      dispatch(subscription(subs._id));
+    }
   };
 
   const addcoment = async (e) => {
     e.preventDefault();
+    if (currentUser) {
+      let data = currentUser.fullname;
+      const res = await axiosInstance.put("/videos/comments/" + path, {
+        comments,
+        username: data,
+      });
 
-    const res = await axios.put("/videos/comments/" + path, {
-      comments,
-    });
-    console.log(res);
+    }
   };
 
   const handleChange = (e) => {
@@ -168,30 +182,32 @@ const SingleLot = () => {
             >
               Comments
             </Typography>
-            <Box width={"100%"} alignItems={"center"}>
-              <TextField
-                sx={{
-                  width: "100%",
-                  marginTop: "10px",
-                }}
-                name="describtion"
-                onChange={handleChange}
-              ></TextField>
+            {comments && (
+              <Box width={"100%"} alignItems={"center"}>
+                <TextField
+                  sx={{
+                    width: "100%",
+                    marginTop: "10px",
+                  }}
+                  name="describtion"
+                  onChange={handleChange}
+                ></TextField>
 
-              <Button
-                sx={{
-                  backgroundColor: "#F35588",
-                  color: "#FFF",
-                  marginTop: "10px",
-                  height: "55px",
-                  width: "max-content",
-                  fontSize: "15px",
-                }}
-                onClick={addcoment}
-              >
-                Comment
-              </Button>
-            </Box>
+                <Button
+                  sx={{
+                    backgroundColor: "#F35588",
+                    color: "#FFF",
+                    marginTop: "10px",
+                    height: "55px",
+                    width: "max-content",
+                    fontSize: "15px",
+                  }}
+                  onClick={addcoment}
+                >
+                  Comment
+                </Button>
+              </Box>
+            )}
             {commentlists.map((m) => {
               return <Commentcard commentlists={m} />;
             })}

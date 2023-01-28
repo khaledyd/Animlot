@@ -2,17 +2,18 @@ import { Box } from "@mui/material";
 import React from "react";
 import Mininav from "../components/Mininav";
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import Card from "../components/watch/Card";
+import {axiosInstance} from "../config"
 
 const Watch = () => {
   const [videos, setVideos] = useState([]);
   useEffect(() => {
     const fetchdata = async () => {
-      const res = await axios.get("/videos");
+      const res = await axiosInstance.get("/videos");
 
       setVideos(res.data);
-      console.log(res.data);
+
     };
 
     fetchdata();
@@ -41,7 +42,7 @@ const Watch = () => {
           gap: "30px",
         }}
       >
-        {videos.map((video) => {
+        {videos && videos.map((video) => {
           return <Card key={video._id} videos={video} />;
         })}
       </Box>

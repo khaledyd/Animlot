@@ -1,7 +1,6 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import Mininav from "../components/Mininav";
 import PersonIcon from "@mui/icons-material/Person";
 
 const About = () => {
